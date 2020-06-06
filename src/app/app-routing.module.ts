@@ -4,7 +4,6 @@ import { BerandaComponent } from './pages/beranda/beranda.component';
 import { RenunganComponent } from './pages/renungan/renungan.component';
 import { ArtikelComponent } from './pages/artikel/artikel.component';
 import { WartaComponent } from './pages/warta/warta.component';
-import { KegiatanComponent } from './pages/kegiatan/kegiatan.component';
 import { InfoComponent } from './pages/info/info.component';
 
 const routes: Routes = [
@@ -31,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'kegiatan',
-    component: KegiatanComponent,
+    loadChildren: () => import('./pages/kegiatan/kegiatan.module').then(load => load.KegiatanModule),
   },
   {
     path: 'info',
