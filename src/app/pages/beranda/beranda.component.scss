@@ -8,7 +8,7 @@
 }
 
 .landing-overlay {
-  background-color: rgba(226, 67, 75, 0.2);
+  background-color: rgba(226, 67, 75, 0.3);
   height: inherit;
   display: flex;
   align-items: center;
@@ -26,4 +26,27 @@
   font-family: "Montserrat", Helvetica, sans-serif;
   font-weight: bold;
   margin: 15px 0;
+}
+
+.sambutan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img.avatar {
+  border-radius: 25px;
+  max-width: 200px;
+  margin: 20px;
+}
+
+.word > h4,
+h5,
+h6 {
+  text-align: left;
+  color: #fee9d7;
+}
+
+.word > h4 {
+  font-weight: bold;
 }

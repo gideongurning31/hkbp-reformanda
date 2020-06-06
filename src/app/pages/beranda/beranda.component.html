@@ -1,9 +1,23 @@
 <div class="landing-box">
   <div class="landing-overlay">
     <div class="container">
-      <div class="welcome" @fadeIn>
+      <div class="sambutan" *ngIf="count === 0" @fading>
+        <img src="../../../assets/sambutan.jpg" alt="person" class="avatar" />
+        <div class="word">
+          <h4>
+            Semoga HKBP Bandung Reformanda<br/>
+            Ressort Bandung Tengah dapat menjadi<br/>
+            tubuh Kristus yang hidup di tengah-<br/>
+            tengah keberadaannya.
+          </h4>
+          <h5>Pdt. Horas Mangoloi Pakpahan, STh., MPd.</h5>
+          <h6>(Pendeta Ressort HKBP Bandung Tengah)</h6>
+        </div>
+      </div>
+      <div class="welcome" *ngIf="count === 2" @fading>
         <h1>HKBP Reformanda</h1>
         <h2>Ressort Bandung Tengah</h2>
+        <h3>selamat datang</h3>
       </div>
     </div>
   </div>
