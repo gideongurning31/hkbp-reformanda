@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Kategorial, kategorial } from './kategorial.member';
 
 @Component({
@@ -8,9 +9,13 @@ import { Kategorial, kategorial } from './kategorial.member';
 })
 export class KegiatanComponent implements OnInit {
   kategorial: Array<Kategorial>;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.kategorial = kategorial;
+  }
+
+  navigate(path: Array<string>) {
+    this.router.navigate(path);
   }
 }

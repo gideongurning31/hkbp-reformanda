@@ -5,27 +5,27 @@ export const kategorial: Array<Kategorial> = [
   {
     nama: 'Seksi Ama',
     thumbnail: `${pre}ama${post}`,
-    route: [''],
+    route: ['kegiatan', 'kategorial', 'ama'],
   },
   {
     nama: 'Seksi Parompuan',
     thumbnail: `${pre}parompuan${post}`,
-    route: [''],
+    route: ['kegiatan', 'kategorial', 'parompuan'],
   },
   {
     nama: 'Naposobulung',
     thumbnail: `${pre}naposo${post}`,
-    route: [''],
+    route: ['kegiatan', 'kategorial', 'naposobulung'],
   },
   {
     nama: 'Seksi Remaja',
     thumbnail: `${pre}remaja${post}`,
-    route: [''],
+    route: ['kegiatan', 'kategorial', 'remaja'],
   },
   {
     nama: 'Sekolah Minggu',
     thumbnail: `${pre}sekolah-minggu${post}`,
-    route: [''],
+    route: ['kegiatan', 'kategorial', 'ama'],
   },
 ];
 
