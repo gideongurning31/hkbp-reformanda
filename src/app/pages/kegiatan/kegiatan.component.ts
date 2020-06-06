@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Kategorial, kategorial } from './kategorial.member';
 
 @Component({
   selector: 'app-kegiatan',
-  template: '<div class="coming-soon"><h1>COMING SOON</h1></div>',
-  styles: ['.coming-soon { width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; }'],
+  templateUrl: 'kegiatan.component.html',
+  styleUrls: ['./kegiatan.component.scss'],
 })
 export class KegiatanComponent implements OnInit {
-
-  constructor() { }
+  kategorial: Array<Kategorial>;
+  constructor() {}
 
   ngOnInit(): void {
+    this.kategorial = kategorial;
   }
-
 }
