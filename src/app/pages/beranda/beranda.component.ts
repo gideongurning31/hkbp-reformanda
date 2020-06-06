@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { trigger, state, animate, transition, style } from '@angular/animations';
 import { Links, links } from './beranda.links';
 
@@ -16,7 +17,7 @@ import { Links, links } from './beranda.links';
 export class BerandaComponent implements OnInit {
   count = 0;
   links: Links[];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.links = links;
@@ -26,5 +27,9 @@ export class BerandaComponent implements OnInit {
 
   addCount(interval) {
     setTimeout(() => (this.count += 1), interval);
+  }
+
+  navigate(path: Array<string>) {
+    this.router.navigate(path);
   }
 }
