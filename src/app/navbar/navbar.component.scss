@@ -8,19 +8,19 @@ header {
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  background-color: #446491;
-  color: #e8ffe8;
+  background-color: #34222e;
+  color: #fee9d7;
 }
 
 .logo {
   height: 70px;
-  padding-left: 10px;
+  padding: 10px;
   cursor: pointer;
 }
 
 a, ul, li {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
-  color: #e8ffe8;
+  color: #fee9d7;
   list-style: none;
   text-decoration: none;
 }
@@ -41,5 +41,5 @@ a {
 }
 
 a:hover {
-  color: #ace6f6;
+  color: #f9bf8f;
 }

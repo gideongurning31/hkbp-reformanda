@@ -1,6 +1,6 @@
 .landing-box {
   width: 100%;
-  height: 500px;
+  height: 450px;
   background-image: url("../../../assets/gereja.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,7 +8,7 @@
 }
 
 .landing-overlay {
-  background-color: rgba(172, 230, 246, 0.5);
+  background-color: rgba(226, 67, 75, 0.2);
   height: inherit;
   display: flex;
   align-items: center;
@@ -17,8 +17,8 @@
 }
 
 .welcome {
-  color: #446491;
-  text-shadow: 0 2px #e4fcf9;
+  color: #fee9d7;
+  text-shadow: 0 2px #e2434b;
 }
 
 .welcome > h1,
