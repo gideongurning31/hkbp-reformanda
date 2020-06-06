@@ -12,8 +12,11 @@ header {
 }
 
 .logo {
-  height: 70px;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+  font-size: 50px;
+  height: 9vh;
   cursor: pointer;
 }
 
@@ -39,6 +42,6 @@ a {
   transition: 0.3s;
 }
 
-a:hover {
+.logo > i:hover, a:hover {
   color: #f9bf8f;
 }

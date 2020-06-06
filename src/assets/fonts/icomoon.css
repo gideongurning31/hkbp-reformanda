@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon/icomoon.eot?2qg1ja');
+  src:  url('icomoon/icomoon.eot?2qg1ja#iefix') format('embedded-opentype'),
+    url('icomoon/icomoon.ttf?2qg1ja') format('truetype'),
+    url('icomoon/icomoon.woff?2qg1ja') format('woff'),
+    url('icomoon/icomoon.svg?2qg1ja#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i.gg {
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gg-bible:before {
+  content: "\e900";
+}
+
+.gg-gallery:before {
+  content: "\e901";
+}
+
+.gg-pray:before {
+  content: "\e902";
+}
+
+.gg-reformanda:before {
+  content: "\e903";
+}
+
+.gg-warta:before {
+  content: "\e904";
+}
