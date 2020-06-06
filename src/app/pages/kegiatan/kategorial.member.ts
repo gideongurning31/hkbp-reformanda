@@ -25,7 +25,7 @@ export const kategorial: Array<Kategorial> = [
   {
     nama: 'Sekolah Minggu',
     thumbnail: `${pre}sekolah-minggu${post}`,
-    route: ['kegiatan', 'kategorial', 'ama'],
+    route: ['kegiatan', 'kategorial', 'sekolah-minggu'],
   },
 ];
 

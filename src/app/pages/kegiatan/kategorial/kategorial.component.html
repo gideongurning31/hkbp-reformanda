@@ -1,0 +1,12 @@
+<div class="container">
+  <h3 class="kategorial">
+    <strong>Kegiatan Sektor dan Kategorial HKBP Reformanda</strong>
+  </h3>
+  <div class="kategorial">
+    <ul *ngFor="let k of kategorial">
+      <li class="kategori" [ngStyle]="{ 'background-image': 'url(' + k.thumbnail + ')' }" (click)="navigate(k.route)">
+        <span class="kategori-text">{{ k.nama }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
