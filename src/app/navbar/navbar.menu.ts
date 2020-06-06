@@ -1,11 +1,11 @@
 export const menuConfig: Menu[] = [
   {
-    title: 'BERANDA',
-    route: ['beranda'],
-  },
-  {
     title: 'RENUNGAN',
     route: ['renungan'],
+  },
+  {
+    title: 'ARTIKEL',
+    route: ['artikel'],
   },
   {
     title: 'WARTA',

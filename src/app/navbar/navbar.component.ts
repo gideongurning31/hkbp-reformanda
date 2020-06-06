@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { menuConfig, Menu } from './navbar.menu';
 
 @Component({
@@ -8,9 +9,13 @@ import { menuConfig, Menu } from './navbar.menu';
 })
 export class NavbarComponent implements OnInit {
   menu: Menu[];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.menu = menuConfig;
+  }
+
+  navigate(path: Array<string>) {
+    this.router.navigate(path);
   }
 }

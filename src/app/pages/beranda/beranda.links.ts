@@ -8,13 +8,13 @@ export interface Links {
 export const links: Links[] = [
   {
     icon: 'gg-pray',
-    text: 'Renungan Pra Paskah bisa dilihat di sini.',
+    text: 'Renungan harian yang ditulis oleh Hamba-hamba Tuhan yang melayani di Gereja HKBP.',
     path: ['renungan'],
   },
   {
     icon: 'gg-bible',
     text: 'Artikel Rohani Kristen yang ditulis oleh Pendeta, Penatua, dan Jemaat Gereja, serta saduran dan terjemahan dari tulisan lain.',
-    path: [''],
+    path: ['artikel'],
   },
   {
     icon: 'gg-warta',
