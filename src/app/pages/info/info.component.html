@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-12">
+    <div class="col-lg-8 col-md-8 col-sm-12" @fadeRight>
       <div class="history">
         <h2><strong>Tentang HKBP Reformanda</strong></h2>
         <div class="history-content" *ngFor="let p of history">
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="col-lg-4 col-md-4 col-sm-12" @fadeLeft>
       <h4><strong>Informasi</strong></h4>
       <ul *ngFor="let item of info">
         <li>

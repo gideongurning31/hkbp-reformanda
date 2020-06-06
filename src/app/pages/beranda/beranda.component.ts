@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger, state, animate, transition, style } from '@angular/animations';
 import { Links, links } from './beranda.links';
+import { animateFadeIn } from 'src/app/utils/common-animation';
 
 @Component({
   selector: 'app-beranda',
   templateUrl: 'beranda.component.html',
   styleUrls: ['beranda.component.scss'],
-  animations: [
-    trigger('fading', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', [animate(1500)]),
-    ]),
-  ],
+  animations: [animateFadeIn],
 })
 export class BerandaComponent implements OnInit {
   count = 0;
