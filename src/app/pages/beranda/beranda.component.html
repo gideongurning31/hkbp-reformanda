@@ -10,7 +10,7 @@
             tubuh Kristus yang hidup di tengah-<br/>
             tengah keberadaannya.
           </h4>
-          <h5>Pdt. Horas Mangoloi Pakpahan, STh., MPd.</h5>
+          <h5>Pdt. Horas M. Pakpahan, STh., MPd.</h5>
           <h6>(Pendeta Ressort HKBP Bandung Tengah)</h6>
         </div>
       </div>
@@ -21,4 +21,12 @@
       </div>
     </div>
   </div>
+</div>
+<div class="home-icon">
+  <ng-container *ngFor="let link of links">
+    <li>
+      <i [class]="'link-icon gg ' + link.icon"></i>
+      <p class="link-icon">{{ link.text }}</p>
+    </li>
+  </ng-container>
 </div>

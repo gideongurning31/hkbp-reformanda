@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, animate, transition, style } from '@angular/animations';
+import { Links, links } from './beranda.links';
 
 @Component({
   selector: 'app-beranda',
@@ -14,9 +15,11 @@ import { trigger, state, animate, transition, style } from '@angular/animations'
 })
 export class BerandaComponent implements OnInit {
   count = 0;
+  links: Links[];
   constructor() {}
 
   ngOnInit(): void {
+    this.links = links;
     this.addCount(7000);
     this.addCount(8500);
   }
