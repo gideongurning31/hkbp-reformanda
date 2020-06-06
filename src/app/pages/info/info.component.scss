@@ -1,0 +1,22 @@
+.container {
+  margin: 25px auto;
+}
+
+.history > h2 {
+  text-align: center;
+}
+
+.history-content {
+  margin: 20px;
+  text-align: justify;
+}
+
+ul, li {
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0;
+}
+
+li > i {
+  width: 25px;
+}

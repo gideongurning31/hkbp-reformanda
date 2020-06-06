@@ -5,7 +5,7 @@ export interface Links {
   description?: string;
 }
 
-export const links: Links[] = [
+export const links: Array<Links> = [
   {
     icon: 'gg-pray',
     text: 'Renungan harian yang ditulis oleh Hamba-hamba Tuhan yang melayani di Gereja HKBP.',

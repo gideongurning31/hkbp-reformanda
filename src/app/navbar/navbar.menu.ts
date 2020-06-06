@@ -1,4 +1,4 @@
-export const menuConfig: Menu[] = [
+export const menuConfig: Array<Menu> = [
   {
     title: 'RENUNGAN',
     route: ['renungan'],

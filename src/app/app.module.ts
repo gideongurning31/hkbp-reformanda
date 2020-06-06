@@ -11,6 +11,7 @@ import { ArtikelComponent } from './pages/artikel/artikel.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { KegiatanComponent } from './pages/kegiatan/kegiatan.component';
 import { InfoComponent } from './pages/info/info.component';
+import { InfoFormComponent } from './pages/info/info-form/info-form.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     WartaComponent,
     KegiatanComponent,
     InfoComponent,
-    FooterComponent
+    InfoFormComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

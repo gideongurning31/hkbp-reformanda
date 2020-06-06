@@ -8,7 +8,7 @@ import { menuConfig, Menu } from './navbar.menu';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  menu: Menu[];
+  menu: Array<Menu>;
   constructor(private router: Router) {}
 
   ngOnInit(): void {

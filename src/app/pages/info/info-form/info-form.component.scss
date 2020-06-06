@@ -1,0 +1,17 @@
+input,
+textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  resize: none;
+}
+
+button#submit {
+  color: #fee9d7;
+  background-color: #e2434b;
+  transition: 0.3s ease-in;
+}
+
+button#submit:hover {
+  font-weight: bold;
+  color: #e2434b;
+  background-color: #f9bf8f;
+}

@@ -16,7 +16,7 @@ import { Links, links } from './beranda.links';
 })
 export class BerandaComponent implements OnInit {
   count = 0;
-  links: Links[];
+  links: Array<Links>;
   constructor(private router: Router) {}
 
   ngOnInit(): void {
