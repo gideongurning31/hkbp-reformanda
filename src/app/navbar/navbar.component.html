@@ -1,0 +1,10 @@
+<header>
+  <img src="../../assets/logo.svg" alt="hkbp-reformanda-logo" class="logo" />
+  <nav>
+    <ul class="nav-links">
+      <ng-container *ngFor="let m of menu">
+        <li><a routerLink="m.route">{{ m.title }}</a></li>
+      </ng-container>
+    </ul>
+  </nav>
+</header>

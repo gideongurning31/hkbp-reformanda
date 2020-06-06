@@ -1,0 +1,39 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding-right: 20px;
+  background-color: #446491;
+  color: #e8ffe8;
+}
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+}
+
+a, ul, li {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  color: #e8ffe8;
+  list-style: none;
+  text-decoration: none;
+}
+
+ul {
+  margin-top: 15px;
+}
+
+li {
+  display: inline-block;
+  margin: 0 25px;
+}
+
+a {
+  font-weight: bold;
+  transition: .3s;
+}
+
+a:hover {
+  color: #ace6f6;
+}
