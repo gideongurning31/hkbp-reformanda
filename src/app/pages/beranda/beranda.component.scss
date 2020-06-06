@@ -1,0 +1,29 @@
+.landing-box {
+  width: 100%;
+  height: 500px;
+  background-image: url("../../../assets/gereja.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.landing-overlay {
+  background-color: rgba(172, 230, 246, 0.5);
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome {
+  color: #446491;
+  text-shadow: 0 2px #e4fcf9;
+}
+
+.welcome > h1,
+.welcome > h2 {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-weight: bold;
+  margin: 15px 0;
+}

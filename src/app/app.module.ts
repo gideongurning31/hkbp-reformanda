@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BerandaComponent } from './pages/beranda/beranda.component';
 import { RenunganComponent } from './pages/renungan/renungan.component';
@@ -23,8 +23,8 @@ import { InfoComponent } from './pages/info/info.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NoopAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
