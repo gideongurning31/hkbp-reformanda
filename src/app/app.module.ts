@@ -10,6 +10,7 @@ import { RenunganComponent } from './pages/renungan/renungan.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { KegiatanComponent } from './pages/kegiatan/kegiatan.component';
 import { InfoComponent } from './pages/info/info.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InfoComponent } from './pages/info/info.component';
     RenunganComponent,
     WartaComponent,
     KegiatanComponent,
-    InfoComponent
+    InfoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

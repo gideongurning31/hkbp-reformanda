@@ -1,0 +1,17 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #34222e;
+  color: #fee9d7;
+}
+
+p {
+  padding-top: 15px;
+  text-align: center;
+}
