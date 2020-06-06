@@ -4,8 +4,9 @@
   </h3>
   <div class="kategorial">
     <ul *ngFor="let k of kategorial">
-      <li class="kategori" [ngStyle]="{ 'background-image': 'url(' + k.thumbnail + ')' }" (click)="navigate(k.route)">
-        <span class="kategori-text">{{ k.nama }}</span>
+      <li>
+        <div class="kategori" [ngStyle]="{ 'background-image': 'url(' + k.thumbnail + ')' }" (click)="navigate(k.route)"></div>
+        <p class="kategori-text">{{ k.nama }}</p>
       </li>
     </ul>
   </div>

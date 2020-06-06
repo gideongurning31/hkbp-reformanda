@@ -16,21 +16,29 @@ li, a {
   color: inherit;
 }
 
-li.kategori {
+div.kategori {
   width: 180px;
   height: 180px;
   border: 1px solid #34222e;
   border-radius: 15px;
-  font-weight: bold;
-  text-align: center;
-  color: #fee9d7;
-  background-color: green;
+  background-color: #34222e;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 180px 180px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  opacity: 0.5;
   transition: 0.3s ease-out;
   cursor: pointer;
+}
+
+div.kategori:hover {
+  width: 185px;
+  height: 185px;
+  border: none;
+  opacity: 1;
+}
+
+p.kategori-text {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
 }
