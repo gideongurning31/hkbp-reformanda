@@ -3,8 +3,9 @@
   <nav>
     <ul class="nav-links">
       <ng-container *ngFor="let m of menu">
-        <li><a routerLink="m.route">{{ m.title }}</a></li>
+        <li><a [routerLink]="m.route">{{ m.title }}</a></li>
       </ng-container>
     </ul>
   </nav>
 </header>
+<router-outlet></router-outlet>
