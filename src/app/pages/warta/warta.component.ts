@@ -19,7 +19,5 @@ export class WartaComponent implements OnInit {
     this.showArchive = false;
   }
 
-  downloadRecent() {
-    console.log('download warta terbaru');
-  }
+  downloadRecent() {}
 }
