@@ -34,3 +34,13 @@ button:hover {
 select, button#search {
   margin: 10px auto;
 }
+
+@media (max-width: 810px) {
+  .warta {
+    flex-direction: column;
+  }
+
+  .warta > button {
+    margin: 10px;
+  }
+}

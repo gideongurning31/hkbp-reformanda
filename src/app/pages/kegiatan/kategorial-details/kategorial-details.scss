@@ -47,3 +47,9 @@ ul {
   background: var(--palette-D2);
   border-radius: 10px;
 }
+
+@media (max-width: 810px) {
+  ul {
+    margin-left: 25px;
+  }
+}
