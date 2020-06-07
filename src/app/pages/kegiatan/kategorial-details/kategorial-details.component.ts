@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-kategorial-details',
@@ -11,6 +11,7 @@ export class KategorialDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.kategorialId = this.route.snapshot.paramMap.get('id').toUpperCase();
+    this.route.paramMap.subscribe((p: Params) => this.kategorialId = p.params.id);
   }
+
 }
