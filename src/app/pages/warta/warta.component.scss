@@ -1,0 +1,36 @@
+.title {
+  margin-top: 25px;
+}
+
+.title > h3, h4,
+.warta > h5 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.warta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+  transition: 0.3s ease-out;
+}
+
+button:hover {
+  font-weight: bold;
+  color: var(--palette-D1);
+  background-color: var(--palette-L2);
+}
+
+.warta > button {
+  width: 300px;
+  margin: 40px;
+}
+
+select, button#search {
+  margin: 10px auto;
+}

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="title">
+    <h3>Warta Jemaat HKBP Reformanda</h3>
+    <h4>Ressort Bandung Tengah</h4>
+  </div>
+  <div class="warta">
+    <button type="button" class="btn btn-lg" (click)="downloadRecent()">
+      Unduh warta terbaru
+    </button>
+    <h5>atau</h5>
+    <button type="button" class="btn btn-lg" (click)="showArchive = true">
+      Cari dari arsip
+    </button>
+  </div>
+</div>
+<div class="container" *ngIf="showArchive" @fading>
+  <form>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-3 col-md-4 col-sm-5">
+          <select class="form-control" id="selectYear">
+            <option hidden>Pilih Tahun</option>
+            <ng-container *ngFor="let y of yearSelect">
+              <option>{{ y }}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-5">
+          <select class="form-control" id="selectMonth">
+            <option hidden>Pilih Bulan</option>
+            <ng-container *ngFor="let m of monthSelect">
+              <option value="{{ m.value }}">{{ m.label }}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-2 col-sm-2">
+          <button type="button" class="btn btn-block" id="search"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="col-lg-2 col-md-1"></div>
+      </div>
+    </div>
+  </form>
+</div>

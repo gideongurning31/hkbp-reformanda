@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { LabelValue } from 'src/app/utils/label-value.model';
+import { animateFadeIn } from 'src/app/utils/common-animation';
+import { months, years } from './warta.datepicker';
 
 @Component({
   selector: 'app-warta',
-  template: '<div class="coming-soon"><h1>COMING SOON</h1></div>',
-  styles: ['.coming-soon { width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; }'],
+  templateUrl: 'warta.component.html',
+  styleUrls: ['./warta.component.scss'],
+  animations: [animateFadeIn],
 })
 export class WartaComponent implements OnInit {
-
-  constructor() { }
+  showArchive: boolean;
+  monthSelect: Array<LabelValue> = months;
+  yearSelect: Array<number> = years;
+  constructor() {}
 
   ngOnInit(): void {
+    this.showArchive = false;
   }
 
+  downloadRecent() {
+    console.log('download warta terbaru');
+  }
 }
