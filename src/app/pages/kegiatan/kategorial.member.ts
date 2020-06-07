@@ -18,8 +18,7 @@ export const kategorial: Array<Kategorial> = [
     thumbnail: `${pre}parompuan${thumb}`,
     route: ['kegiatan', 'kategorial', 'parompuan'],
     deskripsi: [
-      'Seksi Parompuan adalah kelompok/kategorial di bawah Dewan Koinonia, yang beranggotakan dan berkepengurusan dari kaum Ibu. Punguan ini menjadi wadah penyalur aspirasi bagi kaum Ibu.',
-      'Seksi Parompuan juga dibagi ke dalam sub-kategorial seperti Punguan Ina, yang merupakan persekutuan pelayanan untuk meningkatkan iman dan spiritualitas dari kaum Ibu, serta Punguan Ina Hanna yang anggotanya merupakan para janda yang telah ditinggal mati oleh suaminya. Saat ini Punguan Ina HKBP Reformanda beranggotakan sekitar 60 orang, sementara Punguan Ina Hanna beranggotakan sekitar 30 orang.',
+      'Seksi Parompuan adalah kelompok/kategorial di bawah Dewan Koinonia, yang beranggotakan dan berkepengurusan dari kaum Ibu. Punguan ini menjadi wadah penyalur aspirasi bagi kaum Ibu. Seksi Parompuan juga dibagi ke dalam sub-kategorial seperti Punguan Ina, yang merupakan persekutuan pelayanan untuk meningkatkan iman dan spiritualitas dari kaum Ibu, serta Punguan Ina Hanna yang anggotanya merupakan para janda yang telah ditinggal mati oleh suaminya. Saat ini Punguan Ina HKBP Reformanda beranggotakan sekitar 60 orang, sementara Punguan Ina Hanna beranggotakan sekitar 30 orang.',
     ],
   },
   {

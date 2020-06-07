@@ -1,7 +1,28 @@
 <div class="container">
-  <h3 class="title">{{ title }}</h3>
-  <div class="deskripsi" *ngFor="let d of deskripsi">
-    <p>{{ d }}</p>
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <div class="profile">
+        <h3 class="title">{{ title }}</h3>
+        <div class="deskripsi" *ngFor="let d of deskripsi">
+          <p>{{ d }}</p>
+        </div>  
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h5 class="info-title">Pengurus</h5>
+      <ul>
+        <li>Ketua: John Doe</li>
+        <li>Sekretaris: Jane Doe</li>
+        <li>Bendahara: Jack Smith</li>
+      </ul>
+      <hr/>
+      <h5 class="info-title">Kegiatan</h5>
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Dolore et possimus dolor expedita.</li>
+        <li>Molestiae sunt exercitationem facilis.</li>
+      </ul>
+    </div>
   </div>
 </div>
 <app-kategorial></app-kategorial>

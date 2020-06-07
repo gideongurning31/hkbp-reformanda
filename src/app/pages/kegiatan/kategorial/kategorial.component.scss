@@ -17,22 +17,22 @@ li, a {
 }
 
 div.kategori {
-  width: 175px;
-  height: 175px;
+  width: 140px;
+  height: 140px;
   border-radius: 15px;
   border: 2px solid var(--palette-D1);
   background-color: var(--palette-D1);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 180px 180px;
+  background-size: 150px 150px;
   opacity: 0.5;
   transition: 0.3s ease-out;
   cursor: pointer;
 }
 
 div.kategori:hover {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   border: none;
   opacity: 1;
 }
