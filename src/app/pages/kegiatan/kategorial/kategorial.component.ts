@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { animateFadeIn } from 'src/app/utils/common-animation';
 import { Kategorial, kategorial } from '../kategorial.member';
 
 @Component({
   selector: 'app-kategorial',
   templateUrl: './kategorial.component.html',
   styleUrls: ['./kategorial.component.scss'],
+  animations: [animateFadeIn]
 })
 export class KategorialComponent implements OnInit {
   kategorial: Array<Kategorial>;
