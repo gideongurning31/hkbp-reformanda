@@ -62,7 +62,8 @@ img.avatar {
   justify-content: center;
 }
 
-i.link-icon, p.link-icon {
+i.link-icon,
+p.link-icon {
   margin: 10px;
 }
 
@@ -86,7 +87,7 @@ p.link-icon {
   font-weight: bold;
 }
 
-// Mobile phone
+// Mobile device
 @media (max-width: 805px) {
   .icon-box {
     flex-direction: row;

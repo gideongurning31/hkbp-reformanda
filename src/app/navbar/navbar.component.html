@@ -1,15 +1,18 @@
 <header>
   <div class="logo">
-    <i class="gg gg-reformanda" (click)="navigate([''])"></i>
+    <i class="gg gg-reformanda desktop" (click)="navigate([''])"></i>
+    <i class="gg gg-reformanda mobile" (click)="toggleNav()"></i>
   </div>
   <nav>
-    <ul class="nav-links">
+    <ul class="desktop">
       <ng-container *ngFor="let m of menu">
-        <li>
-          <a [routerLink]="m.route" [routerLinkActive]="'is-active'">
-            {{ m.title }}
-          </a>
-        </li>
+        <li><a [routerLink]="m.route" [routerLinkActive]="'is-active'">{{ m.title }}</a></li>
+      </ng-container>
+    </ul>
+    <ul class="mobile" *ngIf="mobileNav">
+      <li><a [routerLink]="['/beranda']" [routerLinkActive]="'is-active'" (click)="toggleNav()">BERANDA</a></li>
+      <ng-container *ngFor="let m of menu">
+        <li><a [routerLink]="m.route" [routerLinkActive]="'is-active'" (click)="toggleNav()">{{ m.title }}</a></li>
       </ng-container>
     </ul>
   </nav>

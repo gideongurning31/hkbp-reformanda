@@ -20,6 +20,10 @@ header {
   cursor: pointer;
 }
 
+.mobile {
+  display: none;
+}
+
 a, ul, li {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   font-weight: bold;
@@ -33,9 +37,17 @@ ul {
   padding-right: 15px;
 }
 
-li {
+ul.mobile {
+  min-height: 82vh;
+}
+
+ul.desktop > li {
   display: inline-block;
   margin: 0 25px;
+}
+
+ul.mobile > li {
+  margin: 20px 0;
 }
 
 .logo > i, a {
@@ -49,4 +61,19 @@ a:hover {
 
 a.is-active {
   color: var(--palette-L2);
+}
+
+// Mobile device
+@media (max-width: 810px) {
+  header {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: inline-block;
+  }
 }

@@ -9,13 +9,19 @@ import { menuConfig, Menu } from './navbar.menu';
 })
 export class NavbarComponent implements OnInit {
   menu: Array<Menu>;
+  mobileNav: boolean;
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.menu = menuConfig;
+    this.mobileNav = false;
   }
 
   navigate(path: Array<string>) {
     this.router.navigate(path);
+  }
+
+  toggleNav() {
+    this.mobileNav = !this.mobileNav;
   }
 }
