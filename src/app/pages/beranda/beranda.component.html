@@ -22,11 +22,9 @@
     </div>
   </div>
 </div>
-<div class="home-icon">
-  <ng-container *ngFor="let link of links">
-    <li>
-      <i [class]="'link-icon gg ' + link.icon" (click)="navigate(link.path)"></i>
-      <p class="link-icon">{{ link.text }}</p>
-    </li>
-  </ng-container>
+<div class="row">
+  <div *ngFor="let link of links" class="col-lg-3 col-sm-12 icon-box">
+    <i [class]="'link-icon gg ' + link.icon" (click)="navigate(link.path)"></i>
+    <p class="link-icon">{{ link.text }}</p>
+  </div>
 </div>

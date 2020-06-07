@@ -48,19 +48,22 @@ img.avatar {
   font-weight: bold;
 }
 
-.home-icon {
+.row {
   font-size: 80px;
-  margin: 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  margin: 10px 5%;
+  padding: 0;
+  width: 90%;
 }
 
-.home-icon > li {
-  margin: 10px 35px;
-  list-style: none;
-  text-align: center;
-  flex: 1 1 0px;
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+i.link-icon, p.link-icon {
+  margin: 10px;
 }
 
 i.link-icon {
@@ -81,4 +84,13 @@ p.link-icon {
   text-align: justify;
   font-size: initial;
   font-weight: bold;
+}
+
+// Mobile phone
+@media (max-width: 805px) {
+  .icon-box {
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 10px;
+  }
 }
