@@ -10,3 +10,9 @@ Run `npm start` or `ng serve` for a dev server, navigate to `http://localhost:42
 ## Build
 Run `ng build` to build the project, the build artifacts will be stored in the `dist/` directory.
 Use the `--prod` flag for a production build.
+
+## Running build on local http-server (npm)
+1. Install npm http-server: `npm install http-server -g`
+2. CD to directory containing build folder: 'hkbp-reformanda'
+3. Run the npm http server: `http-server hkbp-reformanda`
+4. Proceed to address displayed in the terminal
