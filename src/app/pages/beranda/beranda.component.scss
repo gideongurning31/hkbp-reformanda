@@ -89,6 +89,21 @@ p.link-icon {
 
 // Mobile device
 @media (max-width: 805px) {
+  .sambutan {
+    flex-direction: column;
+  }
+
+  .word > h4, h5, h6 {
+    font-size: smaller;
+    text-align: center;
+  }
+
+  img.avatar {
+    border-radius: 50%;
+    max-width: 150px;
+    margin: 10px;
+  }
+
   .icon-box {
     flex-direction: row;
     align-items: flex-start;
