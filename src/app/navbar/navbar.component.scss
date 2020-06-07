@@ -7,8 +7,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #34222e;
-  color: #fee9d7;
+  background-color: var(--palette-D1);
+  color: var(--palette-L1);
 }
 
 .logo {
@@ -23,7 +23,7 @@ header {
 a, ul, li {
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   font-weight: bold;
-  color: #fee9d7;
+  color: var(--palette-L1);
   list-style: none;
   text-decoration: none;
 }
@@ -39,13 +39,14 @@ li {
 }
 
 .logo > i, a {
-  transition: .3s ease-in;
+  transition: 0.3s ease-in;
 }
 
-.logo > i:hover, a:hover {
-  color: #e2434b;
+.logo > i:hover,
+a:hover {
+  color: var(--palette-D2);
 }
 
 a.is-active {
-  color: #f9bf8f;
+  color: var(--palette-L2);
 }

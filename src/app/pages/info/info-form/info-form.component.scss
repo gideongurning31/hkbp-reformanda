@@ -1,17 +1,16 @@
-input,
-textarea {
+input, textarea {
   background-color: rgba(255, 255, 255, 0.2);
   resize: none;
 }
 
 button#submit {
-  color: #fee9d7;
-  background-color: #e2434b;
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
   transition: 0.3s ease-in;
 }
 
 button#submit:hover {
   font-weight: bold;
-  color: #e2434b;
-  background-color: #f9bf8f;
+  color: var(--palette-D1);
+  background-color: var(--palette-L2);
 }

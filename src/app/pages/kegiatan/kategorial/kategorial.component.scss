@@ -19,9 +19,9 @@ li, a {
 div.kategori {
   width: 180px;
   height: 180px;
-  border: 1px solid #34222e;
   border-radius: 15px;
-  background-color: #34222e;
+  border: 1px solid var(--palette-D1);
+  background-color: var(--palette-D1);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 180px 180px;

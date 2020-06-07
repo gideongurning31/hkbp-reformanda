@@ -17,8 +17,8 @@
 }
 
 .welcome {
-  color: #fee9d7;
-  text-shadow: 0 2px #e2434b;
+  color: var(--palette-L1);
+  text-shadow: 0 2px var(--palette-D2);
 }
 
 .welcome > h1,
@@ -41,7 +41,7 @@ img.avatar {
 
 .word > h4, h5, h6 {
   text-align: left;
-  color: #fee9d7;
+  color: var(--palette-L1);
 }
 
 .word > h4 {
@@ -66,15 +66,15 @@ img.avatar {
 i.link-icon {
   padding: 10px;
   border-radius: 15px;
-  color: #fee9d7;
-  background-color: #e2434b;
-  transition: .3s ease-in;
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+  transition: 0.3s ease-in;
   cursor: pointer;
 }
 
 i.link-icon:hover {
-  color: #e2434b;
-  background-color: #34222e;
+  color: var(--palette-D2);
+  background-color: var(--palette-D1);
 }
 
 p.link-icon {

@@ -1,11 +1,31 @@
+:root {
+  // Palette RED
+  --palette-D1: #34222e;
+  --palette-D2: #e2434b;
+  --palette-L2: #f9bf8f;
+  --palette-L1: #fee9d7;
+
+  // Palette GREEN
+  // --palette-D1: #0e9577;
+  // --palette-D2: #04dead;
+  // --palette-L2: #f1efb9;
+  // --palette-L1: #fbfae1;
+
+  // Palette BLUE
+  // --palette-D1: #446491;
+  // --palette-D2: #4b89ac;
+  // --palette-L2: #ace6f6;
+  // --palette-L1: #e4fcf9;
+}
+
 html, body {
   height: 100%;
 }
 
 body {
   font-family: "Nunito", "Helvetica Neue", sans-serif;
-  background-color: #fee9d7;
-  color: #34222e;
+  background-color: var(--palette-L1);
+  color: var(--palette-D1);
   padding: 0;
   margin: 0;
 }
