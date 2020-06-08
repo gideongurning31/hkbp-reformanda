@@ -4,11 +4,7 @@ const reader = require("node-dir");
 
 class Loader {
   constructor() {
-    this.cachedModules = {
-      controller: null,
-      service: null,
-      model: null,
-    };
+    this.cachedModules = { controller: null, service: null, model: null };
     this.modules = {};
   }
 
