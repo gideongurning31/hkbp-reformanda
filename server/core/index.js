@@ -5,9 +5,9 @@ const reader = require("node-dir");
 class Loader {
   constructor() {
     this.cachedModules = {
-      controllers: null,
-      services: null,
-      models: null,
+      controller: null,
+      service: null,
+      model: null,
     };
     this.modules = {};
   }
@@ -22,7 +22,7 @@ class Loader {
     });
   }
 
-  register(files) {
+  instantiate(files) {
     this.modules = {};
     for (let module of files) {
       module = require(module);
@@ -30,13 +30,13 @@ class Loader {
     }
   }
 
-  registerControllers() {
-    if (!this.cachedModules.controllers) {
-      let files = path.join(process.env.APP_PATH, "controller");
-      files = this.getFiles(files, "controller");
-      this.register(files);
+  register(type) {
+    if (!this.cachedModules[type]) {
+      let files = path.join(process.env.APP_PATH, type);
+      files = this.getFiles(files, type);
+      this.instantiate(files);
     } else {
-      this.modules = this.cachedModules.controllers;
+      this.modules = this.cachedModules[type];
     }
   }
 }

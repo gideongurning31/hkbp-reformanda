@@ -10,11 +10,11 @@ class TesController extends BaseController {
   }
 
   registerRoutes() {
-    this.router.route("/tes").get(this.get);
+    this.router.route("/api/tes").get(this.get);
   }
 
   get(req, res, next) {
-    res.status(200).json({ hello: "world" });
+    res.status(200).json("OK.");
   }
 }
 

@@ -3,12 +3,12 @@ const Router = require("express").Router();
 const Loader = require("../core");
 const loader = new Loader();
 
-loader.registerControllers();
-let controllers = loader.getModules();
-Object.keys(controllers).forEach(controller => {
-  controller = controllers[controller];
+loader.register("controller");
+let modules = loader.getModules();
+Object.keys(modules).forEach(controller => {
+  controller = modules[controller];
   Router.use(controller.routes());
-  console.log(`Controller ${controller.constructor.name} is registered to path ${controller.route}.`);
+  console.log(`Controller [${controller.constructor.name}] has been registered`);
 });
 
 module.exports = Router;
