@@ -7,7 +7,7 @@ const moment = require("moment-timezone");
 const localEnvPath = path.join(dir.get(), ".env");
 
 process.env.BASE_PATH = dir.get();
-process.env.APP_PATH = path.join(dir.get(), "app");
+process.env.APP_PATH = path.join(dir.get(), "server");
 
 if (fs.existsSync(localEnvPath)) {
   dotenv.config();

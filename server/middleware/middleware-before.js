@@ -15,7 +15,6 @@ Router.all("*", (req, res, next) => {
       console.info(`${res.statusCode} : ${req.method} ${req.url}`);
       if (res.statusCode === 400 || res.statusCode === 403 || res.statusCode === 500) {
         console.info(`${res.statusCode} : ${req.method} ${req.url}`);
-        console.info(`body ${JSON.stringify(req.body)}`);
       }
     }
   });

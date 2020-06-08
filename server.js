@@ -2,6 +2,7 @@
 require("./server/core/environment");
 const express = require("express");
 const app = express();
+const controllers = require("./server/controller");
 const model = require("./server/model");
 const middleware = require("./server/middleware");
 const distPath = "./dist/hkbp-reformanda";
@@ -18,7 +19,7 @@ app.get("/api", (req, res) => {
   res.status(200).json({ message: "OK" });
 });
 app.use(middleware.before);
-// Register API controllers here
+app.use(controllers);
 app.use(middleware.after);
 
 function start() {
