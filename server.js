@@ -2,11 +2,24 @@
 require("./server/core/environment");
 const express = require("express");
 const app = express();
-const distPath = "./dist/hkbp-reformanda";
 const model = require("./server/model");
+const middleware = require("./server/middleware");
+const distPath = "./dist/hkbp-reformanda";
 
+// Front end application
+app.disable("etag");
 app.use(express.static(distPath));
-app.get("*", (req, res) => res.sendFile("index.html", { root: distPath }));
+
+// REST API service
+app.get("/", (req, res) => res.sendFile("index.html", { root: distPath }));
+app.get("/api", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.status(200).json({ message: "OK" });
+});
+app.use(middleware.before);
+// Register API controllers here
+app.use(middleware.after);
 
 function start() {
   model.sequelize
