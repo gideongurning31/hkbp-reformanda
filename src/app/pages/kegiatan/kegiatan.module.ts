@@ -4,6 +4,7 @@ import { KegiatanRoutingModule } from './kegiatan-route.module';
 import { KegiatanComponent } from './kegiatan.component';
 import { KategorialComponent } from './kategorial/kategorial.component';
 import { KategorialDetailsComponent } from './kategorial-details/kategorial-details.component';
+import { KategorialService } from 'src/app/service/kategorial-service';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { KategorialDetailsComponent } from './kategorial-details/kategorial-deta
     KategorialDetailsComponent,
   ],
   imports: [CommonModule, KegiatanRoutingModule],
-  providers: [],
+  providers: [KategorialService],
 })
 export class KegiatanModule {}
