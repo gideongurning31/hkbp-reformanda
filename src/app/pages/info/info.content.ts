@@ -18,10 +18,16 @@ export const info: Array<Info> = [
     icon: 'fa-map-marker',
     content: 'Jl. Sumedang no. 2, Bandung, 40271',
   },
+  {
+    icon: 'fa-instagram',
+    content: '@hkbpbandungreformanda',
+    url: 'https://www.instagram.com/hkbpbandungreformanda/'
+  },
 ];
 
 export interface Info {
   icon: string;
   content: string;
   tooltip?: string;
+  url?: string;
 }

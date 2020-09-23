@@ -12,7 +12,11 @@
       <h4><strong>Informasi</strong></h4>
       <ul *ngFor="let item of info">
         <li>
-          <i [class]="'fa ' + item.icon"></i>&nbsp;&nbsp;{{ item.content }}
+          <i [class]="'fa ' + item.icon"></i>
+          <ng-container *ngIf="item.url; else noUrl">
+            <a href="{{ item.url }}" target="blank">{{ item.content }}</a>
+          </ng-container>
+          <ng-template #noUrl>&nbsp;&nbsp;{{ item.content }}</ng-template>
         </li>
       </ul>
       <hr>
