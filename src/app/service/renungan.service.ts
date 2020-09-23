@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { api } from 'src/app/service/server.endpoints';
-import { Renungan, listRenungan } from './renungan.content';
+import { Renungan, listRenungan } from '../pages/renungan/renungan.content';
 
 @Injectable()
 export class RenunganService {
@@ -12,12 +12,11 @@ export class RenunganService {
   }
 
   getAllRenungan() {
-    setTimeout(() => this.returnMockRenungan(), 500);
+    return this.returnMockRenungan();
   }
 
   getRenunganToday() {
-    const renungan: Renungan = this.returnMockRenungan()[0];
-    setTimeout(() => renungan, 500);
+    return this.returnMockRenungan()[0];
   }
 
   getRenunganById(id: string) {
