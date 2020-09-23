@@ -3,7 +3,7 @@ require("./core/environment");
 const express = require("express");
 const app = express();
 const controllers = require("./controller");
-const model = require("./model");
+// const model = require("./model");
 const middleware = require("./middleware");
 const distPath = "../dist/hkbp-reformanda";
 
@@ -36,8 +36,9 @@ function onError(error) {
 }
 
 module.exports = function() {
-  model.sequelize
-    .authenticate()
-    .then(() => run())
-    .catch(error => onError(error));
+  // model.sequelize
+  //   .authenticate()
+  //   .then(() => run())
+  //   .catch(error => onError(error));
+  run();
 }
