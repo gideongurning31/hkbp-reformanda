@@ -1,0 +1,11 @@
+<h5>Renungan tanggal {{ renunganDetail.tanggal | date: 'd MMMM yyyy' }}</h5>
+<h4>
+  Nats Firman Tuhan: <strong>{{ renunganDetail.natsAyat }}</strong><br/>
+  <em>"{{ renunganDetail.natsKalimat }}"</em>
+</h4>
+
+<ng-container *ngFor="let p of renunganDetail.isi">
+  <p style="text-align: justify;">{{ p }}</p>
+</ng-container>
+
+<p style="text-align: center;"><strong>{{ renunganDetail.refleksi }}</strong></p>

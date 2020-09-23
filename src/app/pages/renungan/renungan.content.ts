@@ -9,7 +9,7 @@ export interface Renungan {
 
 export const listRenungan: Array<Renungan> = [
   {
-    tanggal: '21/09/2020',
+    tanggal: '2020/09/21',
     natsAyat: 'Yesaya 55: 6',
     natsKalimat: 'Carilah TUHAN selama Ia berkenan ditemui; berserulah kepadaNya selama Ia dekat',
     isi: [
@@ -20,7 +20,7 @@ export const listRenungan: Array<Renungan> = [
     refleksi: 'Tetaplah memelihara persekutuanmu dengan Tuhan melalui jam-jam doamu dan pembacaan firmanNya.',
   },
   {
-    tanggal: '22/09/2020',
+    tanggal: '2020/09/22',
     natsAyat: 'Daniel 9: 3',
     natsKalimat: 'Lalu aku mengarahkan mukaku kepada Tuhan Allah untuk berdoa dan bermohon, sambil berpuasa dan mengenakan kain kabung serta abu.',
     isi: [

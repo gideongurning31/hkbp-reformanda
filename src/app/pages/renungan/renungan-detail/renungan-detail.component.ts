@@ -3,7 +3,7 @@ import { Renungan } from '../renungan.content';
 
 @Component({
   selector: 'app-renungan-detail',
-  template: 'Konten Renungan',
+  templateUrl: 'renungan-detail.component.html',
   styles: [''],
 })
 export class RenunganDetailComponent implements OnInit {
