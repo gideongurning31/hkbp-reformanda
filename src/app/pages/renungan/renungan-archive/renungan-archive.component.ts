@@ -1,17 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Renungan } from '../renungan.content';
 
 @Component({
   selector: 'app-renungan-archive',
-  template: 'Arsip Renungan',
-  styles: [''],
+  templateUrl: 'renungan-archive.component.html',
+  styleUrls: ['./renungan-archive.component.scss'],
 })
 export class RenunganArchiveComponent implements OnInit {
   constructor() {}
 
   @Input() listRenungan: Array<Renungan>;
+  @Output() viewDetail: EventEmitter<Renungan> = new EventEmitter();
 
-  ngOnInit(): void {
-    console.log(this.listRenungan);
-  }
+  ngOnInit(): void {}
 }

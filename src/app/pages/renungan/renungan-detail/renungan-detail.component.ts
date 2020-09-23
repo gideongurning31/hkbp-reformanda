@@ -11,7 +11,5 @@ export class RenunganDetailComponent implements OnInit {
 
   @Input() renunganDetail: Renungan;
 
-  ngOnInit(): void {
-    console.log(this.renunganDetail);
-  }
+  ngOnInit(): void {}
 }

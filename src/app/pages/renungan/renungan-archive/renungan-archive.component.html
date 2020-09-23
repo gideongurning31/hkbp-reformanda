@@ -1,0 +1,6 @@
+<h5>Arsip Renungan</h5>
+<ul *ngFor="let r of listRenungan">
+  <li class="list-renungan" (click)="viewDetail.emit(r)">
+    <strong>{{ r.tanggal | date: 'd MMMM yyyy' }}</strong>
+  </li>
+</ul>
