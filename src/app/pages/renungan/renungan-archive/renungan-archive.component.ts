@@ -9,6 +9,7 @@ import { Renungan } from '../renungan.content';
 export class RenunganArchiveComponent implements OnInit {
   constructor() {}
 
+  @Input() youtubeUrl?: string;
   @Input() listRenungan: Array<Renungan>;
   @Output() viewDetail: EventEmitter<Renungan> = new EventEmitter();
 

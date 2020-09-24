@@ -5,6 +5,7 @@ export interface Renungan {
   isi: Array<string>;
   refleksi: string;
   penulis?: string;
+  youtubeUrl?: string;
 }
 
 export const listRenungan: Array<Renungan> = [
@@ -29,6 +30,7 @@ export const listRenungan: Array<Renungan> = [
       'Mengaku dosa merupakan sikap yang benar di mata Allah, kalau hal itu dilakukan dengan kesadaran akal budi dan batiniah akan memberikan pengampunan, maka anugerahNya akan membebaskan kita dari hukuman dan Maut. Amin.',
     ],
     refleksi: 'Allah selalu mengampuni semua kesalahan-kesalahan kita, dan mari kita menikmati pengampunan itu sebagai anugerah Tuhan.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=26i8B-fH2So'
   },
   {
     tanggal: '2020/09/23',
@@ -40,6 +42,7 @@ export const listRenungan: Array<Renungan> = [
       'Kesadaran ini membuka semangat kerendah hari bahwa hidup, karya dan apapun yang kita lakukan hendaknya bertumpu pada iman kepada Yesus sendiri. Iman ini pula yang mengarahkan kesadaran bahwa Allah itu adalah segalanya bagi kita. Tuhan, berikanlah aku kekuatan dan kesadaran agar aku selalu setia dan mampu menuruti kehendakMu. Sebagai hamba Tuhan, kita tidak perlu marah, kecewa bila tidak ada orang yang mengingat nama kita, tidak ada orang yang memperhitungkan dan menghargai pelayanan kita. Sebaliknya, orang malah menyalahkan perlayanan dan pengorbanan yang sudah kita lakukan. Bukan berarti kita membiarkan diri ditindas atau diperlukan tidak adil, melainkan seperti teladan Yesus kita rela melepaskan hak dan kepentingan pribadi demi menaati kehendak Tuhan dan mendatangkan kesejahteraan bagi sesama. Amin.',
     ],
     refleksi: 'Pekerjaanmu saat ini adalah ibadahmu, dan pengabdianmu.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=9GLl6geHirA'
   },
   {
     tanggal: '2020/09/24',
@@ -51,6 +54,7 @@ export const listRenungan: Array<Renungan> = [
       'Saat ini Tuhan sedang mencari orang-orang yang mengasihi Dia dengan sungguh, memiliki hati yang benar dan memiliki tekad untuk memberi yang terbaik bagiNya. Jika saat ini Tuhan memilij dan mengurapi kita menjadi AlatNya, itu semata-mata karena anugerahNya. Karena itu jangan ada yang membanggakan diri atau menyombongkan diri. Tidak ada alasan sedikit pun bagi kita untuk bermegah. Amin.',
     ],
     refleksi: 'Jangan pernah jemu-jemu untuk melakukan yang baik selama hidupmu, karena kamu akan menuai pada waktunya.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=QWhRYikvH2M'
   },
   {
     tanggal: '2020/09/25',
@@ -63,6 +67,7 @@ export const listRenungan: Array<Renungan> = [
       'Fokuslah menjaga pola hidup sehat, maka Tuhan akan berikan buah kesehatan. Hidup dalam ketaatan pada firman Tuhan, terus hidup dalam hadirat Tuhan, terus mencari Tuhan, maka Tuhan akan beri buah Roh yang lebat dalam hidup kita. Amin.',
     ],
     refleksi: 'Tidak ada seorangpun yang sempurna, ada begitu banyak kelemahan-kelemahan setiap orang, mohon pengampunan dan jangan pernah mengulang kembali dosa itu.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=JNzr3OrfgKY'
   },
   {
     tanggal: '2020/09/26',
@@ -73,5 +78,6 @@ export const listRenungan: Array<Renungan> = [
       'Pemazmur menyadari bahwa banyak kesalahan yang dia perbuat pada masa lalunya, terutama pada masa muda. Pada saat menghadapi pergumulan hidup dan kesesakan bahkan ancaman dari musuh-musuhnya, dia tidak dapat mengandalkan kekuatannya sendiri. Dalam doanya pemazmur sadar akan ketidakmampuannya melawan musuh serta sadar akan dosa-dosa di masa muda, namun mengingat rahmat dan kasih setia Allah, ia tetap menanti-nantikan Tuhan. Raja david mengakui bahwa ia membutuhkan bimbingan Allah untuk sepanjang hari ketika ia menghadapi beragam tantangan hidup. Dalam Mazmur 25 ia berkata, “bawalah aku berjalan dalam kebenaranMu dan ajarlah aku, sebab engkaulah Allah yang menyelamatkan aku, engkau kunantikan sepanjang hari”. Daud meminta bimbingan kepada Allah penebusnya. Hati Daud sungguh rindu menantikan Allah dengan iman yang bergantung kepadanya sepanjang hari.'
     ],
     refleksi: 'Jangan pernah membalas kejahatan dengan kejahatan tetapi buatlah yang baik balas dari yang tidak baik itu. Itulah yang diinginkan Tuhan kepadamu.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=zW91Xf0Hm-M'
   },
 ];

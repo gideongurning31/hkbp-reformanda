@@ -23,7 +23,6 @@ import { FooterComponent } from './footer/footer.component';
     BerandaComponent,
     ArtikelComponent,
     WartaComponent,
-
     InfoComponent,
     InfoFormComponent,
     FooterComponent,

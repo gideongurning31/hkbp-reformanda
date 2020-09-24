@@ -4,7 +4,11 @@
       <app-renungan-detail [renunganDetail]="detailRenungan"></app-renungan-detail>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12">
-      <app-renungan-archive [listRenungan]="listRenungan" (viewDetail)="viewDetail($event)"></app-renungan-archive>
+      <app-renungan-archive
+        [listRenungan]="listRenungan"
+        [youtubeUrl]="detailRenungan.youtubeUrl"
+        (viewDetail)="viewDetail($event)">
+      </app-renungan-archive>
     </div>
   </div>
 </div>

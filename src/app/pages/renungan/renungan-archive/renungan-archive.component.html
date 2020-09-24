@@ -1,8 +1,19 @@
-<div class="row arsip-renungan">
-  <h5>Arsip Renungan</h5>
-  <ul *ngFor="let r of listRenungan">
-    <li class="list-renungan" (click)="viewDetail.emit(r)">
-      <strong>Renungan {{ r.tanggal | date: 'd-MM-yyyy' }}</strong>
-    </li>
-  </ul>
+<div class="arsip-renungan">
+  <div class="row">
+    <h5>Arsip Renungan</h5>
+    <ul *ngFor="let r of listRenungan">
+      <li class="list-renungan" (click)="viewDetail.emit(r)">
+        <strong>Renungan {{ r.tanggal | date: 'd-MM-yyyy' }}</strong>
+      </li>
+    </ul>
+  </div>
+  <div class="row" *ngIf="youtubeUrl">
+    <h5>Video Renungan</h5>
+    <iframe
+      width="auto"
+      height="auto"
+      frameborder="0"
+      [src]="youtubeUrl | safeUrl">
+    </iframe>
+  </div>
 </div>
