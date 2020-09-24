@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { UtilsModule } from './utils/utils-module';
 import { RenunganModule } from './pages/renungan/renungan.module';
 import { KegiatanModule } from './pages/kegiatan/kegiatan.module';
 
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './pages/not-found/not-found-component';
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
+    UtilsModule,
     RenunganModule,
     KegiatanModule,
   ],
