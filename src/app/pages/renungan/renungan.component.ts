@@ -5,7 +5,7 @@ import { Renungan } from './renungan.content';
 @Component({
   selector: 'app-renungan',
   templateUrl: 'renungan.component.html',
-  styles: [''],
+  styleUrls: ['./renungan.component.scss'],
 })
 export class RenunganComponent implements OnInit {
   constructor(private renunganService: RenunganService) {}
@@ -15,7 +15,9 @@ export class RenunganComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllRenungan();
-    this.detailRenungan = this.listRenungan[this.listRenungan.length - 1];
+    if (this.listRenungan && this.listRenungan.length > 0) {
+      this.detailRenungan = this.listRenungan[this.listRenungan.length - 1];
+    }
   }
 
   getAllRenungan() {

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="listRenungan && listRenungan.length > 0; else noData">
     <div class="col-lg-9 col-md-9 col-sm-12">
       <app-renungan-detail [renunganDetail]="detailRenungan"></app-renungan-detail>
     </div>
@@ -11,4 +11,9 @@
       </app-renungan-archive>
     </div>
   </div>
+  <ng-template #noData>
+    <div class="empty-page">
+      <h1>Data tidak ditemukan.</h1>
+    </div>
+  </ng-template>
 </div>
