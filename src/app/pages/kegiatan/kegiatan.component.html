@@ -1,24 +1,29 @@
 <div class="container jadwal" @fadeDown>
-  <h6><strong>Jadwal Kebaktian Minggu</strong></h6>
-  <h5><strong>HKBP Reformanda Ressort Bandung Tengah</strong></h5>
-  <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <p class="jadwal">Kebaktian Pagi<br/>(Bahasa Indonesia)</p>
-      <p class="waktu">07 : 30 WIB</p>
+  <ng-container *ngIf="liveStream; else noLiveStream">
+    <app-livestream></app-livestream>
+  </ng-container>
+  <ng-template #noLiveStream>
+    <h6><strong>Jadwal Kebaktian Minggu</strong></h6>
+    <h5><strong>HKBP Reformanda Ressort Bandung Tengah</strong></h5>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <p class="jadwal">Kebaktian Pagi<br/>(Bahasa Indonesia)</p>
+        <p class="waktu">07 : 30 WIB</p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <p class="jadwal">Kebaktian Siang<br/>(Bahasa Batak)</p>
+        <p class="waktu">09 : 30 WIB</p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <p class="jadwal">Kebaktian Sore/Pemuda<br/>(Bahasa Indonesia)</p>
+        <p class="waktu">17 : 00 WIB</p>
+      </div>
+      <p class="col-lg-12 col-md-12 col-sm-12 jadwal">
+        *Informasi lebih lengkap dan (apabila ada) perubahan jadwal, dapat dilihat langsung di&nbsp;
+        <a [routerLink]="['/warta']"><span class="link-warta">Warta Jemaat</span></a>
+      </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <p class="jadwal">Kebaktian Siang<br/>(Bahasa Batak)</p>
-      <p class="waktu">09 : 30 WIB</p>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <p class="jadwal">Kebaktian Sore/Pemuda<br/>(Bahasa Indonesia)</p>
-      <p class="waktu">17 : 00 WIB</p>
-    </div>
-    <p class="col-lg-12 col-md-12 col-sm-12 jadwal">
-      *Informasi lebih lengkap dan (apabila ada) perubahan jadwal, dapat dilihat langsung di&nbsp;
-      <a [routerLink]="['/warta']"><span class="link-warta">Warta Jemaat</span></a>
-    </p>
-  </div>
+  </ng-template>
 </div>
 <hr/>
 <app-kategorial></app-kategorial>

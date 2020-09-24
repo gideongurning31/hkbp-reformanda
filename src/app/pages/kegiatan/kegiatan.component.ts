@@ -10,5 +10,13 @@ import { animateFadeDown } from 'src/app/utils/common-animation';
 export class KegiatanComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  liveStream: string;
+
+  ngOnInit(): void {
+    this.cekLiveStream();
+  }
+
+  cekLiveStream() {
+    this.liveStream = null;
+  }
 }
