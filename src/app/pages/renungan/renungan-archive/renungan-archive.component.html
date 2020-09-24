@@ -1,6 +1,8 @@
-<div class="arsip-renungan">
+<div class="arsip-renungan" @fading>
   <div class="row">
     <h5>Arsip Renungan</h5>
+  </div>
+  <div class="row">
     <ul class="list-renungan">
       <li *ngFor="let r of listRenungan" class="list-renungan" (click)="viewDetail.emit(r)">
         <strong>Renungan {{ r.tanggal | date: 'd-MM-yyyy' }}</strong>
@@ -9,11 +11,6 @@
   </div>
   <div class="row" *ngIf="youtubeUrl">
     <h5>Video Renungan</h5>
-    <iframe
-      width="480"
-      height="auto"
-      frameborder="0"
-      [src]="youtubeUrl | safeUrl">
-    </iframe>
+    <iframe width="480" height="auto" frameborder="0" [src]="youtubeUrl | safeUrl"></iframe>
   </div>
 </div>

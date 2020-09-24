@@ -1,15 +1,17 @@
-<div class="row">
-  <div class="col-lg-6">
+<div class="row" @fading>
+  <div class="col-lg-6 col-md-6 col-sm-12">
     <h5>{{ renunganDetail.tanggal | date: "d MMMM yyyy" }}</h5>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-6 col-md-6 col-sm-12">
     <h5 class="nats-ayat">{{ renunganDetail.natsAyat }}</h5>
   </div>
 </div>
 <h5 class="nats-renungan">
   <em>"{{ renunganDetail.natsKalimat }}"</em>
 </h5>
-<ng-container *ngFor="let p of renunganDetail.isi">
-  <p class="nats-isi">{{ p }}</p>
-</ng-container>
-<p class="nats-refleksi">{{ renunganDetail.refleksi }}</p>
+<div class="content" @fading>
+  <ng-container *ngFor="let p of renunganDetail.isi">
+    <p class="nats-isi">{{ p }}</p>
+  </ng-container>
+  <p class="nats-refleksi">{{ renunganDetail.refleksi }}</p>
+</div>
