@@ -5,6 +5,7 @@ import { RenunganComponent } from './pages/renungan/renungan.component';
 import { ArtikelComponent } from './pages/artikel/artikel.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
+import { NotFoundComponent } from './pages/not-found/not-found-component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'info',
     component: InfoComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

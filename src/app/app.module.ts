@@ -15,6 +15,7 @@ import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
 import { InfoFormComponent } from './pages/info/info-form/info-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './pages/not-found/not-found-component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
     InfoComponent,
     InfoFormComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
