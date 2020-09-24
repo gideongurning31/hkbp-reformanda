@@ -1,2 +1,9 @@
-<h1 style="text-align: center;">LIVESTREAM EVENTS</h1>
-<iframe width="auto" height="auto" frameborder="0" [src]="liveStreamUrl | safeUrl"></iframe>
+<div class="container">
+  <h3>{{ liveStreamEvent.title }}</h3>
+  <h5 *ngIf="liveStreamEvent.startDate">
+    {{ liveStreamEvent.startDate | date: 'd MMMM yyyy' }}
+  </h5>
+  <div class="livestream-content">
+    <iframe width="640" height="480" frameborder="0" [src]="liveStreamEvent.url | safeUrl" allowfullscreen></iframe>
+  </div>
+</div>

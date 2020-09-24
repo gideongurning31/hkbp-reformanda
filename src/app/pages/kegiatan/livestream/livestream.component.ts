@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LiveStream } from './livestream.model';
 
 @Component({
   selector: 'app-livestream',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LiveStreamComponent implements OnInit {
   constructor() {}
 
-  @Input() liveStreamUrl: string;
+  @Input() liveStreamEvent: LiveStream;
 
   ngOnInit(): void {}
 }

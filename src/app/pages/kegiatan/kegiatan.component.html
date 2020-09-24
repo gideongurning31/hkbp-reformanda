@@ -1,6 +1,6 @@
 <div class="container jadwal" @fadeDown>
   <ng-container *ngIf="liveStream; else noLiveStream">
-    <app-livestream [liveStreamUrl]="liveStream"></app-livestream>
+    <app-livestream [liveStreamEvent]="liveStream"></app-livestream>
   </ng-container>
   <ng-template #noLiveStream>
     <h6><strong>Jadwal Kebaktian Minggu</strong></h6>
