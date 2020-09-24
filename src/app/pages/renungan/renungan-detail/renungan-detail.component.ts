@@ -4,7 +4,7 @@ import { Renungan } from '../renungan.content';
 @Component({
   selector: 'app-renungan-detail',
   templateUrl: 'renungan-detail.component.html',
-  styles: [''],
+  styleUrls: ['./renungan-detail.component.scss'],
 })
 export class RenunganDetailComponent implements OnInit {
   constructor() {}

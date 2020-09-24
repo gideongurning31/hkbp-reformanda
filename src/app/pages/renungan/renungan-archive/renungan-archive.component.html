@@ -1,6 +1,8 @@
-<h5>Arsip Renungan</h5>
-<ul *ngFor="let r of listRenungan">
-  <li class="list-renungan" (click)="viewDetail.emit(r)">
-    <strong>{{ r.tanggal | date: 'd MMMM yyyy' }}</strong>
-  </li>
-</ul>
+<div class="row arsip-renungan">
+  <h5>Arsip Renungan</h5>
+  <ul *ngFor="let r of listRenungan">
+    <li class="list-renungan" (click)="viewDetail.emit(r)">
+      <strong>Renungan {{ r.tanggal | date: 'd-MM-yyyy' }}</strong>
+    </li>
+  </ul>
+</div>
