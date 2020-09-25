@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { animateFadeDown } from 'src/app/utils/common-animation';
-import { Kegiatan, JenisKegiatan } from './kegiatan.model';
+import { Subscription } from 'rxjs';
+import { KegiatanService } from 'src/app/service/kegiatan.service';
+import { Kegiatan } from './kegiatan.model';
 
 @Component({
   selector: 'app-kegiatan',
@@ -9,22 +11,22 @@ import { Kegiatan, JenisKegiatan } from './kegiatan.model';
   animations: [animateFadeDown],
 })
 export class KegiatanComponent implements OnInit {
-  constructor() {}
+  constructor(private kegiatanService: KegiatanService) {}
 
-  liveStream: Kegiatan;
+  events: Kegiatan;
 
   ngOnInit(): void {
-    this.cekLiveStream();
+    this.checkActiveEvents();
   }
 
-  cekLiveStream() {
-    this.liveStream = {
-      id: '1',
-      title: 'Kebaktian Minggu',
-      url: 'https://www.youtube.com/watch?v=2R8l8ZI12vE',
-      type: JenisKegiatan.LIVESTREAM,
-      startDate: '2020/09/27',
-      endDate: '2020/09/28',
-    };
+  checkActiveEvents() {
+    const subsription: Subscription = this.kegiatanService.getCurrent()
+      .subscribe((response: Array<Kegiatan>) => {
+        subsription.unsubscribe();
+        this.events = response[0];
+      }, (error) => {
+        subsription.unsubscribe();
+        console.error(error);
+      });
   }
 }

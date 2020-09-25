@@ -1,8 +1,8 @@
 <div class="container jadwal" @fadeDown>
-  <ng-container *ngIf="liveStream; else noLiveStream">
-    <app-livestream [liveStreamEvent]="liveStream"></app-livestream>
+  <ng-container *ngIf="events; else noEvents">
+    <app-livestream [liveStreamEvent]="events"></app-livestream>
   </ng-container>
-  <ng-template #noLiveStream>
+  <ng-template #noEvents>
     <h6><strong>Jadwal Kebaktian Minggu</strong></h6>
     <h5><strong>HKBP Reformanda Ressort Bandung Tengah</strong></h5>
     <div class="row">
