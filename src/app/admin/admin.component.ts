@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Links } from '../pages/beranda/beranda.links';
+import { adminlinks } from './admin.links';
 
 @Component({
   selector: 'app-admin',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  links: Array<Links>;
+  user: string;
+
+  ngOnInit(): void {
+    this.links = adminlinks;
+    this.user = 'John Doe';
+  }
+
+  navigate(path: Array<string>) {
+    this.router.navigate(path);
+  }
 }

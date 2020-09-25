@@ -1,1 +1,12 @@
-<h1>ADMIN DASHBOARD</h1>
+<div class="container">
+  <div class="row header">
+    <h4>Shalom, {{ user }}!</h4>
+    <h5>Silakan pilih menu di bawah untuk meng-update konten website dan mobile-apps Reformanda</h5>
+  </div>
+  <div class="row menu-row">
+    <div *ngFor="let link of links" class="col-lg-4 col-md-2 col-sm-12 icon-box">
+      <i [class]="'link-icon ' + link.icon" (click)="navigate(link.path)"></i>
+      <p class="link-icon">{{ link.text }}</p>
+    </div>
+  </div>
+</div>
