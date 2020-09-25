@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animateFadeDown } from 'src/app/utils/common-animation';
-import { LiveStream } from './livestream/livestream.model';
+import { Kegiatan, JenisKegiatan } from './kegiatan.model';
 
 @Component({
   selector: 'app-kegiatan',
@@ -11,7 +11,7 @@ import { LiveStream } from './livestream/livestream.model';
 export class KegiatanComponent implements OnInit {
   constructor() {}
 
-  liveStream: LiveStream;
+  liveStream: Kegiatan;
 
   ngOnInit(): void {
     this.cekLiveStream();
@@ -22,6 +22,7 @@ export class KegiatanComponent implements OnInit {
       id: '1',
       title: 'Kebaktian Minggu',
       url: 'https://www.youtube.com/watch?v=2R8l8ZI12vE',
+      type: JenisKegiatan.LIVESTREAM,
       startDate: '2020/09/27',
       endDate: '2020/09/28',
     };
