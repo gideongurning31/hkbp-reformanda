@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
+import { HttpUtilService } from './http-util.service';
 import { SafeUrlPipe } from 'src/app/utils/safe-url.pipe';
 
 @NgModule({
   declarations: [SafeUrlPipe],
   imports: [],
-  providers: [],
-  exports: [SafeUrlPipe],
+  providers: [HttpUtilService],
+  exports: [SafeUrlPipe]
 })
 export class UtilsModule {}

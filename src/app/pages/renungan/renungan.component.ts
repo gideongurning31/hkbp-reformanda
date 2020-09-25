@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { RenunganService } from '../../service/renungan.service';
 import { Renungan } from './renungan.content';
 
@@ -21,7 +22,14 @@ export class RenunganComponent implements OnInit {
   }
 
   getAllRenungan() {
-    this.listRenungan = this.renunganService.getAllRenungan();
+    const subscription: Subscription = this.renunganService.getAllRenungan()
+      .subscribe((response) => {
+        subscription.unsubscribe();
+        console.log(response);
+      }, (error) => {
+        subscription.unsubscribe();
+        console.error(error);
+      });
   }
 
   viewDetail(r: Renungan) {

@@ -1,29 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpUtilService } from '../utils/http-util.service';
 import { api } from 'src/app/service/server.endpoints';
-import { Renungan, listRenungan } from '../pages/renungan/renungan.content';
 
 @Injectable()
 export class RenunganService {
-  constructor(private http: HttpClient) {}
-
-  private returnMockRenungan(): Array<Renungan> {
-    return listRenungan;
-  }
+  constructor(private http: HttpUtilService) {}
 
   getAllRenungan() {
-    return this.returnMockRenungan();
-  }
-
-  getRenunganToday() {
-    return this.returnMockRenungan()[0];
+    return this.http.get(api + '/renungan');
   }
 
   getRenunganById(id: string) {
-    return this.http.get<any>(api + '/renungan/id/' + id);
+    return this.http.get(api + '/renungan/id/' + id);
   }
 
   getRenunganByDate(date: string) {
-    return this.http.get<any>(api + '/renungan/tanggal/' + date);
+    return this.http.get(api + '/renungan/tanggal/' + date);
   }
 }
