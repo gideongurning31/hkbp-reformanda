@@ -17,6 +17,11 @@ const routes: Routes = [
     component: BerandaComponent,
   },
   {
+    // TODO: Add route-guard for admin route
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(load => load.AdminModule)
+  },
+  {
     path: 'renungan',
     loadChildren: () => import('./pages/renungan/renungan.module').then(load => load.RenunganModule)
   },
