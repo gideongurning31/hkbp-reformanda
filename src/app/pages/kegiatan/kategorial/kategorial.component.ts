@@ -23,11 +23,14 @@ export class KategorialComponent implements OnInit {
   }
 
   private getAllKategorial() {
-    const subscription: Subscription = this.kategorialService
-      .getAllKategorial()
-      .subscribe((resp: any) => {
+    this.kategorial = [];
+    const subscription: Subscription = this.kategorialService.getAllKategorial()
+      .subscribe((response: Array<Kategorial>) => {
         subscription.unsubscribe();
-        this.kategorial = resp.data;
+        this.kategorial = response;
+      }, (error) => {
+        subscription.unsubscribe();
+        console.error(error);
       });
   }
 
