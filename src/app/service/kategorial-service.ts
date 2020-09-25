@@ -10,4 +10,7 @@ export class KategorialService {
     return this.http.get(api + '/kategorial');
   }
 
+  getKategorialById(id: string) {
+    return this.http.get(api + '/kategorial/' + id);
+  }
 }

@@ -5,7 +5,7 @@
   <div class="kategorial">
     <ul *ngFor="let k of kategorial">
       <li>
-        <div class="kategori" (click)="navigate(k.route)" [ngStyle]="{ 'background-image': 'url(../../../assets/kategorial/' + k.thumbnail + ')' }"></div>
+        <div class="kategori" (click)="navigate(k.id)" [ngStyle]="{ 'background-image': 'url(../../../assets/kategorial/' + k.thumbnail + ')' }"></div>
         <p class="kategori-text">{{ k.nama }}</p>
       </li>
     </ul>

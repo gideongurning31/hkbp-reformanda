@@ -1,9 +1,9 @@
 <div class="container">
-  <div *ngIf="title" class="row" @fadeDown>
+  <div *ngIf="kategorial.nama" class="row" @fadeDown>
     <div class="col-lg-8 col-md-8 col-sm-12">
       <div class="profile">
-        <h3 class="title">{{ title }}</h3>
-        <div class="deskripsi" *ngFor="let d of deskripsi">
+        <h3 class="title">{{ kategorial.nama }}</h3>
+        <div class="deskripsi" *ngFor="let d of kategorial.deskripsi">
           <p>{{ d }}</p>
         </div>  
       </div>
@@ -25,4 +25,4 @@
     </div>
   </div>
 </div>
-<app-kategorial></app-kategorial>
+<app-kategorial (viewDetail)="getKategorialDesc($event)"></app-kategorial>

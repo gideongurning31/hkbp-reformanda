@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { KategorialService } from 'src/app/service/kategorial-service';
 import { animateFadeDown } from 'src/app/utils/common-animation';
+import { KategorialService } from 'src/app/service/kategorial-service';
+import { Kategorial } from '../kategorial.model';
 
 @Component({
   selector: 'app-kategorial-details',
@@ -11,31 +12,21 @@ import { animateFadeDown } from 'src/app/utils/common-animation';
   animations: [animateFadeDown],
 })
 export class KategorialDetailsComponent implements OnInit {
-  title: string;
-  deskripsi: Array<string>;
   constructor(private route: ActivatedRoute, private kategorialService: KategorialService) {}
+  kategorial: Kategorial;
 
   ngOnInit(): void {
-    this.title = null;
-    this.deskripsi = null;
-    this.route.paramMap.subscribe((p: Params) =>
-      this.getKategorialDesc(p.params.id)
-    );
+    this.getKategorialDesc(this.route.snapshot.paramMap.get('id'));
   }
 
-  private getKategorialDesc(id: string) {
-    const subscription: Subscription = this.kategorialService
-      .getAllKategorial()
-      .subscribe((resp: any) => {
+  getKategorialDesc(id: string) {
+    const subscription: Subscription = this.kategorialService.getKategorialById(id)
+      .subscribe((response: Kategorial) => {
         subscription.unsubscribe();
-        if (resp.data && typeof resp.data === typeof [] && resp.data.length > 0) {
-          resp.data.forEach((k) => {
-            if (k.id === id) {
-              this.title = k.nama;
-              this.deskripsi = k.deskripsi;
-            }
-          });
-        }
+        this.kategorial = response;
+      }, (error) => {
+        subscription.unsubscribe();
+        console.error(error);
       });
   }
 }

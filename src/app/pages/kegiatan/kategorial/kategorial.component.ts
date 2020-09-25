@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { animateFadeIn } from 'src/app/utils/common-animation';
@@ -12,11 +12,9 @@ import { KategorialService } from 'src/app/service/kategorial-service';
   animations: [animateFadeIn],
 })
 export class KategorialComponent implements OnInit {
+  constructor(private router: Router, private kategorialService: KategorialService) {}
+  @Output() viewDetail: EventEmitter<string> = new EventEmitter();
   kategorial: Array<Kategorial>;
-  constructor(
-    private router: Router,
-    private kategorialService: KategorialService
-  ) {}
 
   ngOnInit(): void {
     this.getAllKategorial();
@@ -34,7 +32,8 @@ export class KategorialComponent implements OnInit {
       });
   }
 
-  navigate(path: Array<string>) {
-    this.router.navigate(path);
+  navigate(kategorialId: string) {
+    this.router.navigate(['kegiatan', 'kategorial', kategorialId]);
+    this.viewDetail.emit(kategorialId);
   }
 }
