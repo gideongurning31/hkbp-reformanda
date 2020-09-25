@@ -10,7 +10,7 @@
   <em>"{{ renunganDetail.natsKalimat }}"</em>
 </h5>
 <div class="content" @fading>
-  <ng-container *ngFor="let p of renunganDetail.isi">
+  <ng-container *ngFor="let p of renunganDetail.content">
     <p class="nats-isi">{{ p }}</p>
   </ng-container>
   <p class="nats-refleksi">{{ renunganDetail.refleksi }}</p>

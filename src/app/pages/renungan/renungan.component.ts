@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { RenunganService } from '../../service/renungan.service';
-import { Renungan } from './renungan.content';
+import { Renungan } from './renungan.model';
 
 @Component({
   selector: 'app-renungan',
@@ -16,16 +16,15 @@ export class RenunganComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllRenungan();
-    if (this.listRenungan && this.listRenungan.length > 0) {
-      this.detailRenungan = this.listRenungan[this.listRenungan.length - 1];
-    }
   }
 
   getAllRenungan() {
+    this.listRenungan = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
-      .subscribe((response) => {
+      .subscribe((response: Array<Renungan>) => {
         subscription.unsubscribe();
-        console.log(response);
+        this.listRenungan = response;
+        this.viewDetail(response[response.length - 1]);
       }, (error) => {
         subscription.unsubscribe();
         console.error(error);

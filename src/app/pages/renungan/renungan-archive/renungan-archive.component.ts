@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { animateFadeIn } from 'src/app/utils/common-animation';
-import { Renungan } from '../renungan.content';
+import { Renungan } from '../renungan.model';
 
 @Component({
   selector: 'app-renungan-archive',

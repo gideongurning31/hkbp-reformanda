@@ -6,7 +6,7 @@
     <div class="col-lg-3 col-md-3 col-sm-12">
       <app-renungan-archive
         [listRenungan]="listRenungan"
-        [youtubeUrl]="detailRenungan.youtubeUrl"
+        [youtubeUrl]="detailRenungan && detailRenungan.youtubeUrl ? detailRenungan.youtubeUrl : null"
         (viewDetail)="viewDetail($event)">
       </app-renungan-archive>
     </div>
