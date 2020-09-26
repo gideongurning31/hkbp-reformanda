@@ -16,7 +16,6 @@
           (focus)="releaseFormError('tanggal')"
           [ngClass]="formErrors['tanggal'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="DD/MM/YYYY">
-        <small id="inputTanggalHelp" class="form-text text-muted">*Tanggal renungan harian ditampilkan.</small>
       </div>
       <div class="form-group">
         <!-- TODO: Input nats ayat dengan dropdown-autocomplete -->
@@ -57,7 +56,7 @@
           Refleksi Renungan:*&nbsp;
           <span *ngIf="formErrors['refleksi']" class="form-error-message">{{ formErrors['refleksi'] }}</span>
         </label>
-        <textarea rows="1"
+        <textarea rows="2"
           formControlName="refleksi"
           id="inputRefleksi"
           (focus)="releaseFormError('refleksi')"

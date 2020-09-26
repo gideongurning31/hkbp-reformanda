@@ -5,6 +5,7 @@ import { AlertDialogComponent } from 'src/app/utils/components/alert-dialog.comp
 import { AdminRenunganFormData } from '../admin-renungan.component';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
+import { ActionType } from 'src/app/utils/common.enum';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
@@ -27,6 +28,9 @@ export class AdminRenunganFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    if (this.data.action !== ActionType.CREATE) {
+      this.setFormValue(this.data.action === ActionType.DELETE);
+    }
   }
 
   initForm() {
@@ -48,6 +52,23 @@ export class AdminRenunganFormComponent implements OnInit {
       content: null,
       refleksi: null,
     };
+  }
+
+  setFormValue(readOnly: boolean = false) {
+    Object.keys(this.data.content).forEach(key => this.renunganForm.controls[key].setValue(this.fieldValue(key, this.data.content[key])));
+    if (readOnly) {
+      this.renunganForm.disable();
+    }
+  }
+
+  private fieldValue(key: string, value: any) {
+    if (key === 'tanggal') {
+      return moment.unix(value / 1000).format('YYYY-MM-DD');
+    } else if (key === 'content') {
+      return value.join('|');
+    } else {
+      return value;
+    }
   }
 
   submit() {
