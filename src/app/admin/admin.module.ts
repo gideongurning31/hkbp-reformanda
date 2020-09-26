@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { UtilsModule } from '../utils/utils-module';
 import { AdminRoutingModule } from './admin-route.module';
 import { KategorialService } from '../service/kategorial-service';
@@ -20,9 +22,16 @@ import { AdminWartaComponent } from './admin-warta/admin-warta.component';
     AdminKategorialComponent,
     AdminKegiatanComponent,
     AdminRenunganComponent,
-    AdminWartaComponent
+    AdminWartaComponent,
   ],
-  imports: [CommonModule, UtilsModule, AdminRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    UtilsModule,
+    AdminRoutingModule,
+  ],
   providers: [KategorialService, KegiatanService],
 })
 export class AdminModule {}

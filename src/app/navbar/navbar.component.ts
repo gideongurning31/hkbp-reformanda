@@ -8,13 +8,15 @@ import { menuConfig, Menu } from './navbar.menu';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  constructor(private router: Router) {}
   menu: Array<Menu>;
   mobileNav: boolean;
-  constructor(private router: Router) {}
+  userIsAdmin: boolean;
 
   ngOnInit(): void {
     this.menu = menuConfig;
     this.mobileNav = false;
+    this.userIsAdmin = true; // TODO: Predefine user as admin or non-admin
   }
 
   navigate(path: Array<string>) {
