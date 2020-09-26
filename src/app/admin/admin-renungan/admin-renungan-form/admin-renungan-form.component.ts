@@ -75,16 +75,7 @@ export class AdminRenunganFormComponent implements OnInit {
     if (this.validateForm()) {
       const subscription: Subscription = this.renunganService
         .submit(this.data.action, this.generatePayload())
-        .subscribe((response: Renungan) => {
-          subscription.unsubscribe();
-          if (response && response.id) {
-            this.dialogRef.close();
-            this.onSuccessSubmit.emit(true);
-          } else {
-            console.error(response);
-            this.alertDialog('Something went wrong.');
-          }
-        }, (error) => this.onErrorResponse(subscription, error));
+        .subscribe(response => this.okResponse(subscription, response), error => this.onErrorResponse(subscription, error));
     }
   }
 
@@ -120,6 +111,12 @@ export class AdminRenunganFormComponent implements OnInit {
 
   releaseFormError(key: string): void {
     this.formErrors[key] = null;
+  }
+
+  private okResponse(subscription: Subscription, response: any) {
+    subscription.unsubscribe();
+    this.dialogRef.close();
+    this.onSuccessSubmit.emit(true);
   }
 
   private onErrorResponse(subscription: Subscription, e: any) {

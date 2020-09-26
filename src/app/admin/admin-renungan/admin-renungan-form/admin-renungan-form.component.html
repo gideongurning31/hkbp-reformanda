@@ -84,7 +84,7 @@
   </form>
   <hr>
   <div class="form-footer">
-    <button type="button" class="btn btn-lg btn-success form-button" (click)="submit()">Simpan</button>
+    <button type="button" class="btn btn-lg btn-success form-button" (click)="submit()">{{ data.action == 'DELETE' ? 'Hapus' : 'Simpan' }}</button>
     <button type="button" class="btn btn-lg btn-danger form-button" (click)="cancel()">Batal</button>
   </div>
 </div>
