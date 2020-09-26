@@ -2,13 +2,8 @@ import { Links } from '../pages/beranda/beranda.links';
 
 export const adminlinks: Array<Links> = [
   {
-    icon: 'gg gg-pray',
-    text: 'Renungan Harian',
-    path: ['admin', 'renungan'],
-  },
-  {
     icon: 'gg gg-bible',
-    text: 'Artikel',
+    text: 'Renungan Harian',
     path: ['admin', 'renungan'],
   },
   {
