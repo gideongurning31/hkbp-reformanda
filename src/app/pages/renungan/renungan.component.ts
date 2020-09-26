@@ -24,7 +24,7 @@ export class RenunganComponent implements OnInit {
       .subscribe((response: Array<Renungan>) => {
         subscription.unsubscribe();
         this.listRenungan = response;
-        this.viewDetail(response[response.length - 1]);
+        this.viewDetail(response[0]);
       }, (error) => {
         subscription.unsubscribe();
         console.error(error);

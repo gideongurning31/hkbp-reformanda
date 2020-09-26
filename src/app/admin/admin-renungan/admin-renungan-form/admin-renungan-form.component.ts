@@ -74,7 +74,7 @@ export class AdminRenunganFormComponent implements OnInit {
   submit() {
     if (this.validateForm()) {
       const subscription: Subscription = this.renunganService
-        .createNew(this.generatePayload())
+        .submit(this.data.action, this.generatePayload())
         .subscribe((response: Renungan) => {
           subscription.unsubscribe();
           if (response && response.id) {
