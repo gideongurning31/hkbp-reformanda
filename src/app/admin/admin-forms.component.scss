@@ -38,3 +38,13 @@ th, td {
   min-width: 200px;
   margin-right: 50px;
 }
+
+input.form-error-border,
+textarea.form-error-border {
+  border: 2px solid var(--palette-D2);
+}
+
+.form-error-message {
+  font-weight: bold;
+  color: var(--palette-D2);
+}

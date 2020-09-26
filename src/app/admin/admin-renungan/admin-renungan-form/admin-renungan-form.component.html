@@ -6,44 +6,62 @@
   <form [formGroup]="renunganForm">
     <div class="container">
       <div class="form-group">
-        <label for="inputTanggal">Tanggal Renungan:*</label>
+        <label for="inputTanggal">
+          Tanggal Renungan:*&nbsp;
+          <span *ngIf="formErrors['tanggal']" class="form-error-message">{{ formErrors['tanggal'] }}</span>
+        </label>
         <input type="date"
           formControlName="tanggal"
           id="inputTanggal"
-          class="form-control"
+          (focus)="releaseFormError('tanggal')"
+          [ngClass]="formErrors['tanggal'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="DD/MM/YYYY">
         <small id="inputTanggalHelp" class="form-text text-muted">*Tanggal renungan harian ditampilkan.</small>
       </div>
       <div class="form-group">
         <!-- TODO: Input nats ayat dengan dropdown-autocomplete -->
-        <label for="inputNatsAyat">Nats Renungan:*</label>
+        <label for="inputNatsAyat">
+          Nats Renungan:*&nbsp;
+          <span *ngIf="formErrors['natsAyat']" class="form-error-message">{{ formErrors['natsAyat'] }}&nbsp;</span>
+          <span *ngIf="formErrors['natsKalimat']" class="form-error-message">{{ formErrors['natsKalimat'] }}</span>
+        </label>
         <input type="text"
           formControlName="natsAyat"
           id="inputNatsAyat"
-          class="form-control"
+          (focus)="releaseFormError('natsAyat')"
+          [ngClass]="formErrors['natsAyat'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="contoh: Kejadian 1: 1">
         <hr>
         <textarea rows="2"
           formControlName="natsKalimat"
           id="inputNatsIsi"
-          class="form-control"
+          (focus)="releaseFormError('natsKalimat')"
+          [ngClass]="formErrors['natsKalimat'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="contoh: Pada mulanya Allah menciptakan langit dan bumi"></textarea>
       </div>
       <div class="form-group">
-        <label for="inputIsi">Isi Renungan:*</label>
+        <label for="inputIsi">
+          Isi Renungan:*&nbsp;
+          <span *ngIf="formErrors['content']" class="form-error-message">{{ formErrors['content'] }}</span>
+        </label>
         <textarea rows="5"
           formControlName="content"
           id="inputIsi"
-          class="form-control"
+          (focus)="releaseFormError('content')"
+          [ngClass]="formErrors['content'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="contoh: Renungan kita hari ini mengingatkan kita...|Karena itu..."></textarea>
         <small id="inputIsiHelp" class="form-text text-muted">*Untuk pemisah paragraf gunakan karakter pipe "|" (di atas tombol enter).</small>
       </div>
       <div class="form-group">
-        <label for="inputRefleksi">Refleksi Renungan:*</label>
+        <label for="inputRefleksi">
+          Refleksi Renungan:*&nbsp;
+          <span *ngIf="formErrors['refleksi']" class="form-error-message">{{ formErrors['refleksi'] }}</span>
+        </label>
         <textarea rows="1"
           formControlName="refleksi"
           id="inputRefleksi"
-          class="form-control"
+          (focus)="releaseFormError('refleksi')"
+          [ngClass]="formErrors['refleksi'] ? 'form-control form-error-border' : 'form-control'"
           placeholder="contoh: Pekerjaanmu saat ini adalah ibadahmu, dan pengabdianmu."></textarea>
       </div>
       <div class="form-group">
