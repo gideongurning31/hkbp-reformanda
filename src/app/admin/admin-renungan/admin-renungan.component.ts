@@ -32,7 +32,12 @@ export class AdminRenunganComponent implements OnInit {
   }
 
   addData() {
-    this.dialog.open(AdminRenunganFormComponent, { data: { title: 'Tambah Renungan Harian Baru' }});
+    const dialogRef = this.dialog.open(AdminRenunganFormComponent, { data: { title: 'Tambah Renungan Harian Baru' }});
+    dialogRef.componentInstance.onSuccessSubmit.subscribe((success?: boolean) => {
+      if (success) {
+        this.getDataTable();
+      }
+    });
   }
 
   viewData(id: string) {

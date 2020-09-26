@@ -13,5 +13,6 @@
   <ng-container *ngFor="let p of renunganDetail.content">
     <p class="nats-isi">{{ p }}</p>
   </ng-container>
+  <p *ngIf="renunganDetail.penulis">Renungan oleh:&nbsp;{{ renunganDetail.penulis }}</p>
   <p class="nats-refleksi">{{ renunganDetail.refleksi }}</p>
 </div>

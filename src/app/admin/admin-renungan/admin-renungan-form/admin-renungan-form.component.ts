@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AdminRenunganFormData } from '../admin-renungan.component';
@@ -20,6 +20,7 @@ export class AdminRenunganFormComponent implements OnInit {
 
   renunganForm: FormGroup;
   formErrors: {};
+  onSuccessSubmit: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
     this.initForm();
@@ -52,16 +53,15 @@ export class AdminRenunganFormComponent implements OnInit {
         .createNew(this.generatePayload())
         .subscribe((response: Renungan) => {
           subscription.unsubscribe();
-          this.dialogRef.close({ success: response && response.id !== null });
+          if (response && response.id) {
+            this.dialogRef.close();
+            this.onSuccessSubmit.emit(true);
+          }
         }, (error) => {
           subscription.unsubscribe();
           console.error(error);
         });
     }
-
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   private generatePayload(): Renungan {
