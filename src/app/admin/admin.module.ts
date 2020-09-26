@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UtilsModule } from '../utils/utils-module';
 import { AdminRoutingModule } from './admin-route.module';
 import { KategorialService } from '../service/kategorial-service';
@@ -32,6 +33,7 @@ import { AdminWartaComponent } from './admin-warta/admin-warta.component';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatSnackBarModule,
     UtilsModule,
     AdminRoutingModule,
   ],
