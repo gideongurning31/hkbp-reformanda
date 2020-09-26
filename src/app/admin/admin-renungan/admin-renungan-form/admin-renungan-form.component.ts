@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AlertDialogComponent } from 'src/app/utils/components/alert-dialog.component';
 import { AdminRenunganFormData } from '../admin-renungan.component';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
@@ -16,6 +17,7 @@ export class AdminRenunganFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: AdminRenunganFormData,
     public dialogRef: MatDialogRef<AdminRenunganFormComponent>,
+    private dialog: MatDialog,
     private renunganService: RenunganService) {}
 
   renunganForm: FormGroup;
@@ -56,11 +58,11 @@ export class AdminRenunganFormComponent implements OnInit {
           if (response && response.id) {
             this.dialogRef.close();
             this.onSuccessSubmit.emit(true);
+          } else {
+            console.error(response);
+            this.alertDialog('Something went wrong.');
           }
-        }, (error) => {
-          subscription.unsubscribe();
-          console.error(error);
-        });
+        }, (error) => this.onErrorResponse(subscription, error));
     }
   }
 
@@ -106,5 +108,20 @@ export class AdminRenunganFormComponent implements OnInit {
       case 'content': return 'Konten renungan harus diisi.';
       case 'refleksi': return 'Refleksi renungan harus diisi.';
     }
+  }
+
+  private onErrorResponse(subscription: Subscription, e: any) {
+    subscription.unsubscribe();
+    let definedError = 'An unexpected error occurred.';
+    if (e.error && typeof e.error === typeof 'string') {
+      definedError = e.error;
+    } else if (!e.status || e.status === 0) {
+      definedError = 'Terjadi kesalahan internal pada server.';
+    }
+    this.alertDialog(definedError);
+  }
+
+  private alertDialog(message: string) {
+    this.dialog.open(AlertDialogComponent, { data: message });
   }
 }

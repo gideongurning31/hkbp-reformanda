@@ -10,11 +10,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   </div> `,
   styles: [`
     .alert-message {
-      min-width: 30vw;
       min-height: 20vh;
+      min-width: 30vw;
     }
     .alert-message, .alert-button {
-      width: 100%;
+      max-width: 40vw;
       display: flex;
       align-items: center;
       justify-content: center;
