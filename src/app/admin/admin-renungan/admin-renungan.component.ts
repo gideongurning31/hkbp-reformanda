@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
+import { AdminRenunganFormComponent } from './admin-renungan-form/admin-renungan-form.component';
 
 @Component({
   selector: 'app-admin-renungan',
@@ -9,7 +11,7 @@ import { Renungan } from 'src/app/pages/renungan/renungan.model';
   styleUrls: ['../admin-forms.component.scss'],
 })
 export class AdminRenunganComponent implements OnInit {
-  constructor(private renunganService: RenunganService) {}
+  constructor(private renunganService: RenunganService, private dialog: MatDialog) {}
 
   dataTable: Array<Renungan>;
 
@@ -29,7 +31,9 @@ export class AdminRenunganComponent implements OnInit {
       });
   }
 
-  addData() {}
+  addData() {
+    this.dialog.open(AdminRenunganFormComponent, { data: { title: 'Tambah Renungan Harian Baru' }});
+  }
 
   viewData(id: string) {
     console.log(`View data ${id}`);
@@ -42,4 +46,9 @@ export class AdminRenunganComponent implements OnInit {
   deleteData(id: string) {
     console.log(`Delete data ${id}`);
   }
+}
+
+export interface AdminRenunganFormData {
+  title: string;
+  content?: Renungan;
 }

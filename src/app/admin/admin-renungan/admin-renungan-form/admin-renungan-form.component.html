@@ -1,0 +1,45 @@
+<div class="container popup-form">
+  <div class="row">
+    <h4 class="form-title">{{ data.title }}</h4>
+  </div>
+  <hr>
+  <form>
+    <div class="container">
+      <div class="form-group">
+        <label for="inputTanggal">Tanggal Renungan:*</label>
+        <input type="date" id="inputTanggal" class="form-control" placeholder="DD/MM/YYYY">
+        <small id="inputTanggalHelp" class="form-text text-muted">*Tanggal renungan harian ditampilkan.</small>
+      </div>
+      <div class="form-group">
+        <!-- TODO: Input nats ayat dengan dropdown-autocomplete -->
+        <label for="inputNatsAyat">Nats Renungan:*</label>
+        <input type="text" id="inputNatsAyat" class="form-control" placeholder="contoh: Kejadian 1: 1">
+        <hr>
+        <textarea rows="3" id="inputNatsIsi" class="form-control" placeholder="contoh: Pada mulanya Allah menciptakan langit dan bumi"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="inputIsi">Isi Renungan:*</label>
+        <textarea rows="5" id="inputIsi" class="form-control" placeholder="contoh: Renungan kita hari ini mengingatkan kita...|Karena itu..."></textarea>
+        <small id="inputIsiHelp" class="form-text text-muted">*Untuk pemisah paragraf gunakan karakter pipe "|" (di atas tombol enter).</small>
+      </div>
+      <div class="form-group">
+        <label for="inputRefleksi">Refleksi Renungan:*</label>
+        <textarea rows="1" id="inputRefleksi" class="form-control" placeholder="contoh: Pekerjaanmu saat ini adalah ibadahmu, dan pengabdianmu."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="inputPenulis">Ditulis oleh:</label>
+        <input type="text" id="inputPenulis" class="form-control" placeholder="contoh: Pdt. Saut H. Sirait, M.Th.">
+      </div>
+      <div class="form-group">
+        <label for="inputVideoUrl">Tautan video renungan:</label>
+        <input type="text" id="inputVideoUrl" class="form-control" placeholder="contoh: https://www.sometube.com/watch?v=zW91Xf0Hm-M">
+      </div>
+      <small id="formDisclaimer" class="form-text text-muted">*Kolom bertanda "*" harus diisi.</small>
+    </div>
+  </form>
+  <hr>
+  <div class="form-footer">
+    <button type="button" class="btn btn-lg btn-success form-button" (click)="submit()">Simpan</button>
+    <button type="button" class="btn btn-lg btn-danger form-button" (click)="cancel()">Batal</button>
+  </div>
+</div>
