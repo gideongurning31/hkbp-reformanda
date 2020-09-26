@@ -12,7 +12,10 @@
           <th scope="col">Tautan Video</th>
           <th scope="col">Penulis</th>
           <th scope="col">
-            <button type="button" class="btn btn-block btn-warning">
+            <button
+              type="button"
+              class="btn btn-block btn-warning"
+              (click)="addData()">
               <i class="fa fa-plus"></i>&emsp;Data Baru
             </button>
           </th>
@@ -29,15 +32,24 @@
           </td>
           <td>{{ data.penulis ? data.penulis : '-' }}</td>
           <td>
-            <button type="button" class="btn btn-success">
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="viewData(data.id)">
               <i class="fa fa-search-plus"></i>
             </button>
             &nbsp;|&nbsp;
-            <button type="button" class="btn btn-info">
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="editData(data.id)">
               <i class="fa fa-pencil-square-o"></i>
             </button>
             &nbsp;|&nbsp;
-            <button type="button" class="btn btn-danger">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteData(data.id)">
               <i class="fa fa-trash"></i>
             </button>
           </td>

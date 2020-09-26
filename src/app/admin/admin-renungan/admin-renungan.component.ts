@@ -28,4 +28,18 @@ export class AdminRenunganComponent implements OnInit {
         console.error(error);
       });
   }
+
+  addData() {}
+
+  viewData(id: string) {
+    console.log(`View data ${id}`);
+  }
+
+  editData(id: string) {
+    console.log(`Edit data ${id}`);
+  }
+
+  deleteData(id: string) {
+    console.log(`Delete data ${id}`);
+  }
 }
