@@ -1,12 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { RenunganService } from 'src/app/service/renungan.service';
+import { Renungan } from 'src/app/pages/renungan/renungan.model';
 
 @Component({
   selector: 'app-admin-renungan',
-  template: '<div class="coming-soon"><h1>COMING SOON</h1></div>',
-  styles: ['.coming-soon { width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; }']
+  templateUrl: 'admin-renungan.component.html',
+  styleUrls: ['../admin-forms.component.scss'],
 })
 export class AdminRenunganComponent implements OnInit {
-  constructor() {}
+  constructor(private renunganService: RenunganService) {}
 
-  ngOnInit(): void {}
+  dataTable: Array<Renungan>;
+
+  ngOnInit(): void {
+    this.getDataTable();
+  }
+
+  getDataTable() {
+    this.dataTable = [];
+    const subscription: Subscription = this.renunganService.getAllRenungan()
+      .subscribe((response: Array<Renungan>) => {
+        subscription.unsubscribe();
+        this.dataTable = response;
+      }, (error) => {
+        subscription.unsubscribe();
+        console.error(error);
+      });
+  }
 }
