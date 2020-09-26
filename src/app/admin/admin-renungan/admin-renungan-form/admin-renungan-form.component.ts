@@ -20,6 +20,7 @@ export class AdminRenunganFormComponent implements OnInit {
     private dialog: MatDialog,
     private renunganService: RenunganService) {}
 
+  formTitle: string = FormHeader[this.data.action];
   renunganForm: FormGroup;
   formErrors: {};
   onSuccessSubmit: EventEmitter<boolean> = new EventEmitter();
@@ -89,7 +90,7 @@ export class AdminRenunganFormComponent implements OnInit {
     const values = this.renunganForm.value;
     Object.keys(this.formErrors).forEach((key) => {
       if (values[key] === null || values[key].trim() === '') {
-        this.formErrors[key] = this.appendFormError(key);
+        this.formErrors[key] = ValidationErrors[key];
         errors++;
       }
     });
@@ -98,16 +99,6 @@ export class AdminRenunganFormComponent implements OnInit {
 
   releaseFormError(key: string): void {
     this.formErrors[key] = null;
-  }
-
-  private appendFormError(field: string): string {
-    switch (field) {
-      case 'tanggal': return 'Tanggal renungan harus diisi.';
-      case 'natsAyat': return 'Ayat nats harus diisi.';
-      case 'natsKalimat': return 'Kalimat nats harus diisi.';
-      case 'content': return 'Konten renungan harus diisi.';
-      case 'refleksi': return 'Refleksi renungan harus diisi.';
-    }
   }
 
   private onErrorResponse(subscription: Subscription, e: any) {
@@ -124,4 +115,18 @@ export class AdminRenunganFormComponent implements OnInit {
   private alertDialog(message: string) {
     this.dialog.open(AlertDialogComponent, { data: message });
   }
+}
+
+enum FormHeader {
+  CREATE = 'Tambah Renungan Harian Baru',
+  UPDATE = 'Ubah data Renungan Harian',
+  DELETE = 'Apakah Anda yakin akan menghapus Renungan ini?'
+}
+
+enum ValidationErrors {
+  tanggal = 'Tanggal renungan harus diisi.',
+  natsAyat = 'Ayat nats harus diisi.',
+  natsKalimat = 'Kalimat nats harus diisi.',
+  content = 'Konten renungan harus diisi.',
+  refleksi = 'Refleksi renungan harus diisi.'
 }
