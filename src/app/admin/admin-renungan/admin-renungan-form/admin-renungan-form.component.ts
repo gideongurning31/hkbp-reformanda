@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RenunganService } from 'src/app/service/renungan.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AdminRenunganFormData } from '../admin-renungan.component';
+import { RenunganService } from 'src/app/service/renungan.service';
+import { Renungan } from 'src/app/pages/renungan/renungan.model';
+import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-admin-renungan-form',
@@ -10,7 +13,10 @@ import { AdminRenunganFormData } from '../admin-renungan.component';
   styleUrls: ['../../admin-forms.component.scss'],
 })
 export class AdminRenunganFormComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: AdminRenunganFormData, private renunganService: RenunganService) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: AdminRenunganFormData,
+    public dialogRef: MatDialogRef<AdminRenunganFormComponent>,
+    private renunganService: RenunganService) {}
 
   renunganForm: FormGroup;
   formErrors: {};
@@ -42,11 +48,39 @@ export class AdminRenunganFormComponent implements OnInit {
 
   submit() {
     if (this.validateForm()) {
-      console.log(this.renunganForm.value);
+      const subscription: Subscription = this.renunganService
+        .createNew(this.generatePayload())
+        .subscribe((response: Renungan) => {
+          subscription.unsubscribe();
+          this.dialogRef.close({ success: response && response.id !== null });
+        }, (error) => {
+          subscription.unsubscribe();
+          console.error(error);
+        });
     }
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
-  cancel() {}
+  private generatePayload(): Renungan {
+    return {
+      id: this.renunganForm.controls.id.value,
+      tanggal: moment(this.renunganForm.controls.tanggal.value, 'YYYY-MM-DD').unix() * 1000,
+      natsAyat: this.renunganForm.controls.natsAyat.value,
+      natsKalimat: this.renunganForm.controls.natsKalimat.value,
+      content: this.renunganForm.controls.content.value.split('|'),
+      refleksi: this.renunganForm.controls.refleksi.value,
+      penulis: this.renunganForm.controls.penulis.value,
+      youtubeUrl: this.renunganForm.controls.youtubeUrl.value,
+    };
+  }
+
+  cancel() {
+    this.dialogRef.close();
+    this.initForm();
+  }
 
   private validateForm(): boolean {
     let errors = 0;
@@ -73,5 +107,4 @@ export class AdminRenunganFormComponent implements OnInit {
       case 'refleksi': return 'Refleksi renungan harus diisi.';
     }
   }
-
 }

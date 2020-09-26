@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpUtilService } from '../utils/http-util.service';
 import { api } from 'src/app/service/server.endpoints';
+import { Renungan } from '../pages/renungan/renungan.model';
 
 @Injectable()
 export class RenunganService {
@@ -16,5 +17,9 @@ export class RenunganService {
 
   getRenunganByDate(date: string) {
     return this.http.get(api + '/renungan/tanggal/' + date);
+  }
+
+  createNew(payload: Renungan) {
+    return this.http.post(api + '/renungan/', payload);
   }
 }
