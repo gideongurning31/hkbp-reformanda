@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BerandaComponent } from './pages/beranda/beranda.component';
-import { ArtikelComponent } from './pages/artikel/artikel.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
 import { NotFoundComponent } from './pages/not-found/not-found-component';
@@ -24,10 +23,6 @@ const routes: Routes = [
   {
     path: 'renungan',
     loadChildren: () => import('./pages/renungan/renungan.module').then(load => load.RenunganModule)
-  },
-  {
-    path: 'artikel',
-    component: ArtikelComponent,
   },
   {
     path: 'warta',

@@ -12,7 +12,6 @@ import { KegiatanModule } from './pages/kegiatan/kegiatan.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BerandaComponent } from './pages/beranda/beranda.component';
-import { ArtikelComponent } from './pages/artikel/artikel.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
 import { InfoFormComponent } from './pages/info/info-form/info-form.component';
@@ -24,7 +23,6 @@ import { NotFoundComponent } from './pages/not-found/not-found-component';
     AppComponent,
     NavbarComponent,
     BerandaComponent,
-    ArtikelComponent,
     WartaComponent,
     InfoComponent,
     InfoFormComponent,

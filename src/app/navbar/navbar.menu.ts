@@ -4,10 +4,6 @@ export const menuConfig: Array<Menu> = [
     route: ['renungan'],
   },
   {
-    title: 'ARTIKEL',
-    route: ['artikel'],
-  },
-  {
     title: 'WARTA',
     route: ['warta'],
   },
