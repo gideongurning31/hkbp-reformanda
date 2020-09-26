@@ -12,6 +12,7 @@ import { AdminDatabaseComponent } from './admin-database/admin-database.componen
 import { AdminKategorialComponent } from './admin-kategorial/admin-kategorial.component';
 import { AdminKegiatanComponent } from './admin-kegiatan/admin-kegiatan.component';
 import { AdminRenunganComponent } from './admin-renungan/admin-renungan.component';
+import { AdminRenunganFormComponent } from './admin-renungan/admin-renungan-form/admin-renungan-form.component';
 import { AdminWartaComponent } from './admin-warta/admin-warta.component';
 
 @NgModule({
@@ -22,9 +23,10 @@ import { AdminWartaComponent } from './admin-warta/admin-warta.component';
     AdminKategorialComponent,
     AdminKegiatanComponent,
     AdminRenunganComponent,
+    AdminRenunganFormComponent,
     AdminWartaComponent,
   ],
-  entryComponents: [],
+  entryComponents: [AdminRenunganFormComponent],
   imports: [
     CommonModule,
     FormsModule,
