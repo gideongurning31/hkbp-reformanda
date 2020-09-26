@@ -21,9 +21,4 @@ export const adminlinks: Array<Links> = [
     text: 'Profil Kategorial',
     path: ['admin', 'kategorial'],
   },
-  {
-    icon: 'fa fa-users',
-    text: 'Database Jemaat',
-    path: ['admin', 'database'],
-  },
 ];
