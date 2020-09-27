@@ -26,15 +26,16 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
   formTitle: string = FormHeader[this.data.action];
   kegiatanForm: FormGroup;
   jenisKegiatan: Array<LabelValueDesc> = [
-    { label: 'Livestream', value: 'LIVESTREAM', description: 'contoh: Kebaktian yang di-broadcast live melalui media streaming' },
-    { label: 'Podcast', value: 'PODCAST', description: 'contoh: Video Reformanda Podcast' },
-    { label: 'Converence', value: 'CONVERENCE', description: 'contoh: Sermon/PA via konferensi daring' },
-    { label: 'Kegiatan lainnya', value: 'OTHERS', description: 'Kegiatan selain pilihan-pilihan di atas' },
+    { label: 'Livestream', value: 'Livestream', description: 'contoh: Kebaktian yang di-broadcast live melalui media streaming' },
+    { label: 'Podcast', value: 'Podcast', description: 'contoh: Video Reformanda Podcast' },
+    { label: 'Converence', value: 'Converence', description: 'contoh: Sermon/PA via konferensi daring' },
+    { label: 'Kegiatan lainnya', value: 'Kegiatan lainnya', description: 'Kegiatan selain pilihan-pilihan di atas' },
   ];
 
   ngOnInit(): void {
     this.initForm();
-    if (this.data.action !== ActionType.CREATE) this.setFormValue();
+    this.setFormValue(this.data.content);
+    if (this.data.action === ActionType.DELETE) this.kegiatanForm.disable();
   }
 
   initForm() {
@@ -58,13 +59,12 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
     };
   }
 
-  setFormValue() {
-    // TODO: Setup to form form date, start and end
-    // Object.keys(this.data.content).forEach(key => {
-    //   const value = this.data.content[key];
-    //   if (this.data.content[key]) this.kegiatanForm.controls[key].setValue(value);
-    // });
-    if (this.data.action === ActionType.DELETE) this.kegiatanForm.disable();
+  setFormValue(data: Kegiatan) {
+    if (!data) return;
+    ['id', 'title', 'type', 'url'].forEach((key) => this.kegiatanForm.controls[key].setValue(data[key]));
+    this.kegiatanForm.controls.date.setValue(moment.unix(data.startDate / 1000).format('YYYY-MM-DD'));
+    this.kegiatanForm.controls.start.setValue(moment.unix(data.startDate / 1000).format('HH:mm'));
+    this.kegiatanForm.controls.end.setValue(moment.unix(data.endDate / 1000).format('HH:mm'));
   }
 
   submit() {
@@ -72,14 +72,14 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
       const subscription: Subscription = this.kegiatanService
         .submit(this.data.action, this.generatePayload())
         .subscribe(response => this.okResponse(subscription, response), error => this.onErrorResponse(subscription, error));
-      }
+    }
   }
 
   private generatePayload(): Kegiatan {
     return {
       id: this.kegiatanForm.controls.id.value,
       title: this.kegiatanForm.controls.title.value,
-      type: JenisKegiatan[this.kegiatanForm.controls.type.value],
+      type: this.kegiatanForm.controls.type.value,
       url: this.kegiatanForm.controls.url.value,
       startDate: this.timePayload(this.kegiatanForm.controls.start.value),
       endDate: this.timePayload(this.kegiatanForm.controls.end.value),

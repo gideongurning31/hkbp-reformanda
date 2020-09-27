@@ -56,8 +56,7 @@ export class AdminRenunganFormComponent extends BaseFormComponent implements OnI
       let value = this.data.content[key];
       if (key === 'tanggal') value = moment.unix(value / 1000).format('YYYY-MM-DD');
       else if (key === 'content') value = value.join('|');
-
-      if (this.data.content[key]) this.renunganForm.controls[key].setValue(value);
+      this.renunganForm.controls[key].setValue(value);
     });
     if (this.data.action === ActionType.DELETE) this.renunganForm.disable();
   }
