@@ -12,7 +12,12 @@
           <th scope="col">Penulis</th>
           <th scope="col">Tautan Video</th>
           <th scope="col">
-            <button type="button" class="btn btn-block btn-warning btn-table" (click)="openForm('CREATE')">
+            <button
+              type="button"
+              class="btn btn-block btn-warning btn-table"
+              matTooltip="Tambah data renungan baru"
+              matTooltipPosition="above"
+              (click)="openForm('CREATE')">
               <i class="fa fa-plus"></i>&emsp;Data Baru
             </button>
           </th>
@@ -25,15 +30,31 @@
           <td><strong>{{ data.natsAyat }}</strong></td>
           <td>{{ data.penulis ? data.penulis : '-' }}</td>
           <td>
-            <a *ngIf="data.youtubeUrl; else noUrl" href="{{ data.youtubeUrl }}" target="blank">{{ data.youtubeUrl }}</a>
+            <a *ngIf="data.youtubeUrl; else noUrl"
+              href="{{ data.youtubeUrl }}"
+              matTooltip="Buka tautan video renungan"
+              matTooltipPosition="right"
+              target="blank">
+              {{ data.youtubeUrl }}
+            </a>
             <ng-template #noUrl>N/A</ng-template>
           </td>
           <td>
-            <button type="button" class="btn btn-info btn-table" (click)="openForm('UPDATE', data)">
+            <button
+              type="button"
+              class="btn btn-info btn-table"
+              matTooltip="Lihat/ubah data renungan"
+              matTooltipPosition="below"
+              (click)="openForm('UPDATE', data)">
               <i class="fa fa-pencil-square-o"></i>
             </button>
             &nbsp;|&nbsp;
-            <button type="button" class="btn btn-danger btn-table" (click)="openForm('DELETE', data)">
+            <button
+              type="button"
+              class="btn btn-danger btn-table"
+              matTooltip="Hapus data renungan"
+              matTooltipPosition="below"
+              (click)="openForm('DELETE', data)">
               <i class="fa fa-trash"></i>
             </button>
           </td>
