@@ -43,24 +43,26 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
       title: new FormControl(null, Validators.required),
       type: new FormControl(null, Validators.required),
       url: new FormControl(null, Validators.required),
-      startDate: new FormControl(null, Validators.required),
-      endDate: new FormControl(null, Validators.required),
+      date: new FormControl(null, Validators.required),
+      start: new FormControl(null, Validators.required),
+      end: new FormControl(null, Validators.required),
     });
 
     this.formErrors = {
       title: null,
       type: null,
-      startDate: null,
-      endDate: null,
+      date: null,
+      start: null,
+      end: null,
     };
   }
 
   setFormValue() {
-    Object.keys(this.data.content).forEach(key => {
-      let value = this.data.content[key];
-      if (key === 'startDate' || key === 'endDate') value = moment.unix(value / 1000).format('YYYY-MM-DD');
-      if (this.data.content[key]) this.kegiatanForm.controls[key].setValue(value);
-    });
+    // TODO: Setup to form form date, start and end
+    // Object.keys(this.data.content).forEach(key => {
+    //   const value = this.data.content[key];
+    //   if (this.data.content[key]) this.kegiatanForm.controls[key].setValue(value);
+    // });
     if (this.data.action === ActionType.DELETE) this.kegiatanForm.disable();
   }
 
@@ -78,9 +80,14 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
       title: this.kegiatanForm.controls.title.value,
       type: JenisKegiatan[this.kegiatanForm.controls.type.value],
       url: this.kegiatanForm.controls.url.value,
-      startDate: moment(this.kegiatanForm.controls.startDate.value, 'YYYY-MM-DD').unix() * 1000,
-      endDate: moment(this.kegiatanForm.controls.endDate.value, 'YYYY-MM-DD').unix() * 1000,
+      startDate: this.timePayload(this.kegiatanForm.controls.start.value),
+      endDate: this.timePayload(this.kegiatanForm.controls.end.value),
     };
+  }
+
+  private timePayload(time: string = '00:00') {
+    const date = `${this.kegiatanForm.controls.date.value} ${time}:00`;
+    return moment(date, 'YYYY-MM-DD HH:mm:ss').unix() * 1000;
   }
 
   cancel() {
@@ -115,6 +122,7 @@ enum FormHeader {
 enum ValidationErrors {
   title = 'Nama/judul kegiatan harus diisi.',
   type = 'Jenis kegiatan harus dipilih.',
-  startDate = 'Tanggal mulai harus ditentukan.',
-  endDate = 'Tanggal berakhir harus ditentukan.',
+  date = 'Tanggal kegiatan harus ditentukan.',
+  start = 'Waktu berakhir harus ditentukan.',
+  end = 'Waktu berakhir harus ditentukan.',
 }
