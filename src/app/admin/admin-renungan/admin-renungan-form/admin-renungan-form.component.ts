@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseFormComponent } from 'src/app/utils/components/base-form.component';
-import { AdminRenunganFormData } from '../admin-renungan.component';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -99,6 +98,11 @@ export class AdminRenunganFormComponent extends BaseFormComponent implements OnI
     });
     return errors === 0;
   }
+}
+
+interface AdminRenunganFormData {
+  action: ActionType;
+  content?: Renungan;
 }
 
 enum FormHeader {

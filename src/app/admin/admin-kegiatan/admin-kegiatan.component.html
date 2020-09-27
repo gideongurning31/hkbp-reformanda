@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <h3 class="admin-header">Update Menu Kegiatan dan Media Streaming</h3>
+  </div>
+  <div class="row">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Judul</th>
+          <th scope="col">Jenis</th>
+          <th scope="col">Mulai</th>
+          <th scope="col">Selesai</th>
+          <th scope="col">Tautan</th>
+          <th scope="col">
+            <button
+              type="button"
+              class="btn btn-block btn-warning btn-table"
+              matTooltip="Tambah data kegiatan"
+              matTooltipPosition="above"
+              (click)="openForm('CREATE')">
+              <i class="fa fa-plus"></i>&emsp;Data Baru
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataTable; let i = index">
+          <td><strong>{{ i + 1 }}</strong></td>
+          <td>{{ data.title }}</td>
+          <td>{{ data.type }}</td>
+          <td>{{ data.startDate | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ data.endDate | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>
+            <a *ngIf="data.url; else noUrl"
+              href="{{ data.url }}"
+              matTooltip="Lihat tautan kegiatan"
+              matTooltipPosition="right"
+              target="blank">
+              {{ displayUrl(data.url) }}
+            </a>
+            <ng-template #noUrl>N/A</ng-template>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info btn-table"
+              matTooltip="Lihat/ubah data kegiatan"
+              matTooltipPosition="below"
+              (click)="openForm('UPDATE', data)">
+              <i class="fa fa-pencil-square-o"></i>
+            </button>
+            &nbsp;|&nbsp;
+            <button
+              type="button"
+              class="btn btn-danger btn-table"
+              matTooltip="Hapus data kegiatan"
+              matTooltipPosition="below"
+              (click)="openForm('DELETE', data)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

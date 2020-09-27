@@ -45,11 +45,6 @@ export class AdminRenunganComponent implements OnInit {
   }
 }
 
-export interface AdminRenunganFormData {
-  content?: Renungan;
-  action: ActionType;
-}
-
 enum SubmitMessage {
   CREATE = 'Data Renungan Harian baru berhasil ditambahkan.',
   UPDATE = 'Data Renungan Harian berhasil diperbaharui.',
