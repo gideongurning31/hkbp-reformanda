@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AlertDialogComponent } from 'src/app/utils/components/alert-dialog.component';
+import { BaseFormComponent } from 'src/app/utils/components/base-form.component';
 import { AdminRenunganFormData } from '../admin-renungan.component';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
@@ -14,17 +14,17 @@ import * as moment from 'moment';
   templateUrl: 'admin-renungan-form.component.html',
   styleUrls: ['../../admin-forms.component.scss'],
 })
-export class AdminRenunganFormComponent implements OnInit {
+export class AdminRenunganFormComponent extends BaseFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: AdminRenunganFormData,
-    public dialogRef: MatDialogRef<AdminRenunganFormComponent>,
-    private dialog: MatDialog,
-    private renunganService: RenunganService) {}
+    dialog: MatDialog,
+    private dialogRef: MatDialogRef<AdminRenunganFormComponent>,
+    private renunganService: RenunganService) {
+      super(dialog);
+  }
 
   formTitle: string = FormHeader[this.data.action];
   renunganForm: FormGroup;
-  formErrors: {};
-  onSuccessSubmit: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
     this.initForm();
@@ -98,28 +98,6 @@ export class AdminRenunganFormComponent implements OnInit {
       }
     });
     return errors === 0;
-  }
-
-  releaseFormError(key: string): void {
-    this.formErrors[key] = null;
-  }
-
-  private okResponse(subscription: Subscription, response: any) {
-    subscription.unsubscribe();
-    this.dialogRef.close();
-    this.onSuccessSubmit.emit(true);
-  }
-
-  private onErrorResponse(subscription: Subscription, e: any) {
-    subscription.unsubscribe();
-    let definedError = 'An unexpected error occurred.';
-    if (e.error && typeof e.error === typeof 'string') definedError = e.error;
-    else if (!e.status || e.status === 0) definedError = 'Terjadi kesalahan internal pada server.';
-    this.alertDialog(definedError);
-  }
-
-  private alertDialog(message: string) {
-    this.dialog.open(AlertDialogComponent, { data: message });
   }
 }
 

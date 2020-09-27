@@ -34,18 +34,14 @@ export class AdminRenunganComponent implements OnInit {
   }
 
   openForm(type: string, content?: Renungan) {
-    const onSuccess = SubmitMessage[ActionType[type]];
     const dialogRef = this.dialog.open(AdminRenunganFormComponent, { data: { action: ActionType[type], content }});
-    dialogRef.componentInstance.onSuccessSubmit.subscribe((success?: boolean) => {
+    dialogRef.componentInstance.successSubmit.subscribe((success?: boolean) => {
       if (success) {
-        this.snackAlert(onSuccess);
+        dialogRef.close();
         this.getDataTable();
+        this.snackBar.open(SubmitMessage[ActionType[type]], 'x', { duration: 2500, horizontalPosition: 'end', verticalPosition: 'bottom' });
       }
     });
-  }
-
-  private snackAlert(message: string) {
-    this.snackBar.open(message, 'x', { duration: 2500, horizontalPosition: 'end', verticalPosition: 'bottom' });
   }
 }
 
