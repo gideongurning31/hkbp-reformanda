@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animateFadeDown } from 'src/app/utils/common-animation';
 import { Subscription } from 'rxjs';
+import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
 import { KegiatanService } from 'src/app/service/kegiatan.service';
 import { Kegiatan } from './kegiatan.model';
 
@@ -11,7 +12,8 @@ import { Kegiatan } from './kegiatan.model';
   animations: [animateFadeDown],
 })
 export class KegiatanComponent implements OnInit {
-  constructor(private kegiatanService: KegiatanService) {}
+
+  constructor(private spinner: SpinnerCloakService, private kegiatanService: KegiatanService) {}
 
   events: Kegiatan;
 
@@ -20,13 +22,16 @@ export class KegiatanComponent implements OnInit {
   }
 
   checkActiveEvents() {
+    this.spinner.setSpinner(true);
     const subsription: Subscription = this.kegiatanService.getCurrent()
       .subscribe((response: Array<Kegiatan>) => {
         subsription.unsubscribe();
         this.events = response[0];
+        this.spinner.setSpinner(false);
       }, (error) => {
         subsription.unsubscribe();
         console.error(error);
+        this.spinner.setSpinner(false);
       });
   }
 }

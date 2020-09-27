@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
 import { RenunganService } from '../../service/renungan.service';
 import { Renungan } from './renungan.model';
 
@@ -9,7 +10,8 @@ import { Renungan } from './renungan.model';
   styleUrls: ['./renungan.component.scss'],
 })
 export class RenunganComponent implements OnInit {
-  constructor(private renunganService: RenunganService) {}
+
+  constructor(private spinner: SpinnerCloakService, private renunganService: RenunganService) {}
 
   listRenungan: Array<Renungan>;
   detailRenungan: Renungan;
@@ -19,15 +21,18 @@ export class RenunganComponent implements OnInit {
   }
 
   getAllRenungan() {
+    this.spinner.setSpinner(true);
     this.listRenungan = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
       .subscribe((response: Array<Renungan>) => {
         subscription.unsubscribe();
         this.listRenungan = response;
         this.viewDetail(response[0]);
+        this.spinner.setSpinner(false);
       }, (error) => {
         subscription.unsubscribe();
         console.error(error);
+        this.spinner.setSpinner(false);
       });
   }
 

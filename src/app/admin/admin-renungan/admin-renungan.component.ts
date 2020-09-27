@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -13,7 +14,12 @@ import { AdminRenunganFormComponent } from './admin-renungan-form/admin-renungan
   styleUrls: ['../admin-forms.component.scss'],
 })
 export class AdminRenunganComponent implements OnInit {
-  constructor(private renunganService: RenunganService, private dialog: MatDialog, private snackBar: MatSnackBar) {}
+
+  constructor(
+    private spinner: SpinnerCloakService,
+    private renunganService: RenunganService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar) {}
 
   dataTable: Array<Renungan>;
 
@@ -22,14 +28,17 @@ export class AdminRenunganComponent implements OnInit {
   }
 
   getDataTable() {
+    this.spinner.setSpinner(true);
     this.dataTable = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
       .subscribe((response: Array<Renungan>) => {
         subscription.unsubscribe();
         this.dataTable = response;
+        this.spinner.setSpinner(false);
       }, (error) => {
         subscription.unsubscribe();
         console.error(error);
+        this.spinner.setSpinner(false);
       });
   }
 
