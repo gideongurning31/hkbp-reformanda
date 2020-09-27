@@ -1,0 +1,16 @@
+.cloak {
+  background-color: rgba($color: #111, $alpha: .5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  width: 100vw;
+  z-index: 2;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 91vh;
+}
