@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseFormComponent } from 'src/app/utils/components/base-form.component';
+import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
 import { KegiatanService } from 'src/app/service/kegiatan.service';
-import { Kegiatan, JenisKegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
+import { Kegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
 import { ActionType } from 'src/app/utils/common.enum';
 import { LabelValueDesc } from 'src/app/utils/label-value.model';
 import { Subscription } from 'rxjs';
@@ -15,12 +16,14 @@ import * as moment from 'moment';
   styleUrls: ['../../admin-forms.component.scss'],
 })
 export class AdminKegiatanFormComponent extends BaseFormComponent implements OnInit {
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: AdminKegiatanFormData,
+    spinner: SpinnerCloakService,
     dialog: MatDialog,
     private dialogRef: MatDialogRef<AdminKegiatanFormComponent>,
     private kegiatanService: KegiatanService) {
-      super(dialog);
+      super(dialog, spinner);
   }
 
   formTitle: string = FormHeader[this.data.action];
@@ -69,6 +72,7 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
 
   submit() {
     if (this.validateForm()) {
+      this.setSpinner(true);
       const subscription: Subscription = this.kegiatanService
         .submit(this.data.action, this.generatePayload())
         .subscribe(response => this.okResponse(subscription, response), error => this.onErrorResponse(subscription, error));
