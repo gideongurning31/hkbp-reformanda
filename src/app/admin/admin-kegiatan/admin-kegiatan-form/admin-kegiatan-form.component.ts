@@ -54,6 +54,7 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
       date: null,
       start: null,
       end: null,
+      invalidRange: null
     };
   }
 
@@ -71,7 +72,7 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
       const subscription: Subscription = this.kegiatanService
         .submit(this.data.action, this.generatePayload())
         .subscribe(response => this.okResponse(subscription, response), error => this.onErrorResponse(subscription, error));
-    }
+      }
   }
 
   private generatePayload(): Kegiatan {
@@ -96,15 +97,20 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
   }
 
   private validateForm(): boolean {
-    let errors = 0;
     const values = this.kegiatanForm.value;
     Object.keys(this.formErrors).forEach((key) => {
-      if (values[key] === null || values[key].trim() === '') {
-        this.formErrors[key] = ValidationErrors[key];
-        errors++;
-      }
+      if (key === 'invalidRange') return;
+      if (!values[key] || values[key].trim() === '') this.formErrors[key] = ValidationErrors[key];
     });
-    return errors === 0;
+
+    // tslint:disable-next-line: no-string-literal
+    if (this.invalidRange(values)) this.formErrors['invalidRange'] = ValidationErrors.invalidRange;
+    return this.noValidationErrors();
+  }
+
+  private invalidRange(values: any): boolean {
+    if (!values.start || !values.end) return false;
+    return moment(values.end, 'HH:mm').isSameOrBefore(moment(values.start, 'HH:mm'));
   }
 }
 
@@ -125,4 +131,5 @@ enum ValidationErrors {
   date = 'Tanggal kegiatan harus ditentukan.',
   start = 'Waktu berakhir harus ditentukan.',
   end = 'Waktu berakhir harus ditentukan.',
+  invalidRange = 'Waktu berakhir harus lebih besar daripada waktu mulai.',
 }

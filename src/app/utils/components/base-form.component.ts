@@ -13,8 +13,10 @@ export class BaseFormComponent {
   failedSubmit: EventEmitter<string> = new EventEmitter();
   formErrors: {};
 
-  releaseFormError(key: string): void {
-    this.formErrors[key] = null;
+  releaseFormErrors(keys: Array<string>): void {
+    keys.forEach((key) => {
+      if (this.formErrors.hasOwnProperty(key)) this.formErrors[key] = null;
+    });
   }
 
   okResponse(subscription: Subscription, response: any) {
@@ -32,5 +34,13 @@ export class BaseFormComponent {
 
   alertDialog(message: string) {
     this.dialog.open(AlertDialogComponent, { data: message });
+  }
+
+  noValidationErrors(): boolean {
+    let count = 0;
+    Object.keys(this.formErrors).forEach(key => {
+      if (this.formErrors[key] && this.formErrors[key] !== '') count++;
+    });
+    return count === 0;
   }
 }

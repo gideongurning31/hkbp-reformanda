@@ -89,15 +89,11 @@ export class AdminRenunganFormComponent extends BaseFormComponent implements OnI
   }
 
   private validateForm(): boolean {
-    let errors = 0;
     const values = this.renunganForm.value;
     Object.keys(this.formErrors).forEach((key) => {
-      if (values[key] === null || values[key].trim() === '') {
-        this.formErrors[key] = ValidationErrors[key];
-        errors++;
-      }
+      if (values[key] === null || values[key].trim() === '') this.formErrors[key] = ValidationErrors[key];
     });
-    return errors === 0;
+    return this.noValidationErrors();
   }
 }
 

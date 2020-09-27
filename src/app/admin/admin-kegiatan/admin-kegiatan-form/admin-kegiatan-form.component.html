@@ -15,7 +15,7 @@
           formControlName="title"
           id="inputTitle"
           class="form-control"
-          (focus)="releaseFormError('title')"
+          (focus)="releaseFormErrors(['title'])"
           [ngClass]="formErrors['title'] ? 'form-error-border' : null"
           [ngClass]="kegiatanForm.controls.title.disabled ? 'read-only' : null"
           placeholder="contoh: Sermon Gabungan Sektor">
@@ -32,7 +32,7 @@
             formControlName="type"
             id="inputType"
             class="form-control"
-            (ngModelChange)="releaseFormError('type')"
+            (ngModelChange)="releaseFormErrors(['type'])"
             [ngClass]="formErrors['type'] ? 'form-error-border' : null"
             [ngClass]="kegiatanForm.controls.title.disabled ? 'read-only' : null">
             <option
@@ -56,7 +56,7 @@
         <input type="date"
           formControlName="date"
           id="inputTanggal"
-          (focus)="releaseFormError('date')"
+          (focus)="releaseFormErrors(['date'])"
           class="form-control"
           [ngClass]="formErrors['date'] ? 'form-error-border' : null"
           [ngClass]="kegiatanForm.controls.date.disabled ? 'read-only' : null"
@@ -71,7 +71,7 @@
         <input type="time"
           formControlName="start"
           id="inputStart"
-          (focus)="releaseFormError('start')"
+          (focus)="releaseFormErrors(['start', 'invalidRange'])"
           class="form-control"
           [ngClass]="formErrors['start'] ? 'form-error-border' : null"
           [ngClass]="kegiatanForm.controls.start.disabled ? 'read-only' : null">
@@ -85,11 +85,12 @@
         <input type="time"
           formControlName="end"
           id="inputEnd"
-          (focus)="releaseFormError('end')"
+          (focus)="releaseFormErrors(['end', 'invalidRange'])"
           class="form-control"
           [ngClass]="formErrors['end'] ? 'form-error-border' : null"
           [ngClass]="kegiatanForm.controls.end.disabled ? 'read-only' : null">
       </div>
+      <p class="form-error-message" style="text-align: center;" *ngIf="formErrors['invalidRange']">{{ formErrors['invalidRange'] }}</p>
 
       <div class="form-group">
         <label for="inputUrl">Tautan kegiatan daring:</label>
