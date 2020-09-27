@@ -28,9 +28,7 @@ export class AdminRenunganFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    if (this.data.action !== ActionType.CREATE) {
-      this.setFormValue(this.data.action === ActionType.DELETE);
-    }
+    if (this.data.action !== ActionType.CREATE) this.setFormValue();
   }
 
   initForm() {
@@ -54,21 +52,14 @@ export class AdminRenunganFormComponent implements OnInit {
     };
   }
 
-  setFormValue(readOnly: boolean = false) {
-    Object.keys(this.data.content).forEach(key => this.renunganForm.controls[key].setValue(this.fieldValue(key, this.data.content[key])));
-    if (readOnly) {
-      this.renunganForm.disable();
-    }
-  }
-
-  private fieldValue(key: string, value: any) {
-    if (key === 'tanggal') {
-      return moment.unix(value / 1000).format('YYYY-MM-DD');
-    } else if (key === 'content') {
-      return value.join('|');
-    } else {
-      return value;
-    }
+  setFormValue() {
+    Object.keys(this.data.content).forEach((key) => {
+      let value = this.data.content[key];
+      if (key === 'tanggal') value = moment.unix(value / 1000).format('YYYY-MM-DD');
+      else if (key === 'content') value = value.join('|');
+      this.renunganForm.controls[key].setValue(value);
+    });
+    if (this.data.action === ActionType.DELETE) this.renunganForm.disable();
   }
 
   submit() {
@@ -122,11 +113,8 @@ export class AdminRenunganFormComponent implements OnInit {
   private onErrorResponse(subscription: Subscription, e: any) {
     subscription.unsubscribe();
     let definedError = 'An unexpected error occurred.';
-    if (e.error && typeof e.error === typeof 'string') {
-      definedError = e.error;
-    } else if (!e.status || e.status === 0) {
-      definedError = 'Terjadi kesalahan internal pada server.';
-    }
+    if (e.error && typeof e.error === typeof 'string') definedError = e.error;
+    else if (!e.status || e.status === 0) definedError = 'Terjadi kesalahan internal pada server.';
     this.alertDialog(definedError);
   }
 

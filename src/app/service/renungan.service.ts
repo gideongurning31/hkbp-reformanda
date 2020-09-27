@@ -22,11 +22,8 @@ export class RenunganService {
 
   submit(action: ActionType, payload: Renungan) {
     let endpoint = api + '/renungan/';
-    if (action === ActionType.UPDATE) {
-      endpoint += payload.id;
-    } else if (action === ActionType.DELETE) {
-      endpoint += `delete/${payload.id}`;
-    }
+    if (action === ActionType.UPDATE) endpoint += payload.id;
+    else if (action === ActionType.DELETE) endpoint += `delete/${payload.id}`;
     return this.http.post(endpoint, payload);
   }
 }
