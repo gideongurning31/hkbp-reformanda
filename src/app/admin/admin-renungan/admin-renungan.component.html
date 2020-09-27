@@ -9,10 +9,10 @@
           <th scope="col">#</th>
           <th scope="col">Tanggal</th>
           <th scope="col">Nats</th>
-          <th scope="col">Tautan Video</th>
           <th scope="col">Penulis</th>
+          <th scope="col">Tautan Video</th>
           <th scope="col">
-            <button type="button" class="btn btn-block btn-warning" (click)="openForm('CREATE')">
+            <button type="button" class="btn btn-block btn-warning btn-table" (click)="openForm('CREATE')">
               <i class="fa fa-plus"></i>&emsp;Data Baru
             </button>
           </th>
@@ -23,17 +23,17 @@
           <td><strong>{{ i + 1 }}</strong></td>
           <td>{{ data.tanggal | date: 'dd/MM/yyyy' }}</td>
           <td><strong>{{ data.natsAyat }}</strong></td>
+          <td>{{ data.penulis ? data.penulis : '-' }}</td>
           <td>
             <a *ngIf="data.youtubeUrl; else noUrl" href="{{ data.youtubeUrl }}" target="blank">{{ data.youtubeUrl }}</a>
             <ng-template #noUrl>N/A</ng-template>
           </td>
-          <td>{{ data.penulis ? data.penulis : '-' }}</td>
           <td>
-            <button type="button" class="btn btn-info" (click)="openForm('UPDATE', data)">
+            <button type="button" class="btn btn-info btn-table" (click)="openForm('UPDATE', data)">
               <i class="fa fa-pencil-square-o"></i>
             </button>
             &nbsp;|&nbsp;
-            <button type="button" class="btn btn-danger" (click)="openForm('DELETE', data)">
+            <button type="button" class="btn btn-danger btn-table" (click)="openForm('DELETE', data)">
               <i class="fa fa-trash"></i>
             </button>
           </td>
