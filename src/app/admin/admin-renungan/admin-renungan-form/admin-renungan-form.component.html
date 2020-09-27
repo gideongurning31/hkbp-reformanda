@@ -14,7 +14,9 @@
           formControlName="tanggal"
           id="inputTanggal"
           (focus)="releaseFormError('tanggal')"
-          [ngClass]="formErrors['tanggal'] ? 'form-control form-error-border' : 'form-control'"
+          class="form-control"
+          [ngClass]="formErrors['tanggal'] ? 'form-error-border' : null"
+          [ngClass]="renunganForm.controls.tanggal.disabled ? 'read-only' : null"
           placeholder="DD/MM/YYYY">
       </div>
       <div class="form-group">
@@ -28,14 +30,18 @@
           formControlName="natsAyat"
           id="inputNatsAyat"
           (focus)="releaseFormError('natsAyat')"
-          [ngClass]="formErrors['natsAyat'] ? 'form-control form-error-border' : 'form-control'"
+          class="form-control"
+          [ngClass]="formErrors['natsAyat'] ? 'form-error-border' : null"
+          [ngClass]="renunganForm.controls.natsAyat.disabled ? 'read-only' : null"
           placeholder="contoh: Kejadian 1: 1">
         <hr>
         <textarea rows="2"
           formControlName="natsKalimat"
           id="inputNatsIsi"
           (focus)="releaseFormError('natsKalimat')"
-          [ngClass]="formErrors['natsKalimat'] ? 'form-control form-error-border' : 'form-control'"
+          class="form-control"
+          [ngClass]="formErrors['natsKalimat'] ? 'form-error-border' : null"
+          [ngClass]="renunganForm.controls.natsKalimat.disabled ? 'read-only' : null"
           placeholder="contoh: Pada mulanya Allah menciptakan langit dan bumi"></textarea>
       </div>
       <div class="form-group">
@@ -47,7 +53,9 @@
           formControlName="content"
           id="inputIsi"
           (focus)="releaseFormError('content')"
-          [ngClass]="formErrors['content'] ? 'form-control form-error-border' : 'form-control'"
+          class="form-control"
+          [ngClass]="formErrors['content'] ? 'form-error-border' : null"
+          [ngClass]="renunganForm.controls.content.disabled ? 'read-only' : null"
           placeholder="contoh: Renungan kita hari ini mengingatkan kita...|Karena itu..."></textarea>
         <small id="inputIsiHelp" class="form-text text-muted">*Untuk pemisah paragraf gunakan karakter pipe "|" (di atas tombol enter).</small>
       </div>
@@ -60,7 +68,9 @@
           formControlName="refleksi"
           id="inputRefleksi"
           (focus)="releaseFormError('refleksi')"
-          [ngClass]="formErrors['refleksi'] ? 'form-control form-error-border' : 'form-control'"
+          class="form-control"
+          [ngClass]="formErrors['refleksi'] ? 'form-error-border' : null"
+          [ngClass]="renunganForm.controls.refleksi.disabled ? 'read-only' : null"
           placeholder="contoh: Pekerjaanmu saat ini adalah ibadahmu, dan pengabdianmu."></textarea>
       </div>
       <div class="form-group">
@@ -69,6 +79,7 @@
           formControlName="penulis"
           id="inputPenulis"
           class="form-control"
+          [ngClass]="renunganForm.controls.penulis.disabled ? 'read-only' : null"
           placeholder="contoh: Pdt. Saut H. Sirait, M.Th.">
       </div>
       <div class="form-group">
@@ -77,6 +88,7 @@
           formControlName="youtubeUrl"
           id="inputVideoUrl"
           class="form-control"
+          [ngClass]="renunganForm.controls.youtubeUrl.disabled ? 'read-only' : null"
           placeholder="contoh: https://www.somewebsite.com/watch?v=zW91Xf0Hm-M">
       </div>
       <small id="formDisclaimer" class="form-text text-muted">*Kolom bertanda "*" harus diisi.</small>

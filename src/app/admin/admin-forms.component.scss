@@ -48,3 +48,8 @@ textarea.form-error-border {
   font-weight: bold;
   color: var(--palette-D2);
 }
+
+.read-only {
+  cursor: no-drop;
+  color: var(--palette-D2);
+}
