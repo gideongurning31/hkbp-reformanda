@@ -3,8 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseFormComponent } from 'src/app/utils/components/base-form.component';
 import { KegiatanService } from 'src/app/service/kegiatan.service';
-import { Kegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
+import { Kegiatan, JenisKegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
 import { ActionType } from 'src/app/utils/common.enum';
+import { LabelValueDesc } from 'src/app/utils/label-value.model';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
@@ -24,6 +25,12 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
 
   formTitle: string = FormHeader[this.data.action];
   kegiatanForm: FormGroup;
+  jenisKegiatan: Array<LabelValueDesc> = [
+    { label: 'Livestream', value: 'LIVESTREAM', description: 'contoh: Kebaktian yang di-broadcast live melalui media streaming' },
+    { label: 'Podcast', value: 'PODCAST', description: 'contoh: Video Reformanda Podcast' },
+    { label: 'Converence', value: 'CONVERENCE', description: 'contoh: Sermon/PA via konferensi daring' },
+    { label: 'Kegiatan lainnya', value: 'OTHERS', description: 'Kegiatan selain pilihan-pilihan di atas' },
+  ];
 
   ngOnInit(): void {
     this.initForm();
@@ -69,7 +76,7 @@ export class AdminKegiatanFormComponent extends BaseFormComponent implements OnI
     return {
       id: this.kegiatanForm.controls.id.value,
       title: this.kegiatanForm.controls.title.value,
-      type: this.kegiatanForm.controls.type.value,
+      type: JenisKegiatan[this.kegiatanForm.controls.type.value],
       url: this.kegiatanForm.controls.url.value,
       startDate: moment(this.kegiatanForm.controls.startDate.value, 'YYYY-MM-DD').unix() * 1000,
       endDate: moment(this.kegiatanForm.controls.endDate.value, 'YYYY-MM-DD').unix() * 1000,

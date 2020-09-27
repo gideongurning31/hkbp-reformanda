@@ -14,4 +14,5 @@ export enum JenisKegiatan {
   LIVESTREAM = 'Livestream',
   PODCAST = 'Podcast',
   CONVERENCE = 'Converence',
+  OTHERS = 'Kegiatan lainnya',
 }

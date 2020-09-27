@@ -14,11 +14,48 @@
         <input type="text"
           formControlName="title"
           id="inputTitle"
-          (focus)="releaseFormError('title')"
           class="form-control"
+          (focus)="releaseFormError('title')"
           [ngClass]="formErrors['title'] ? 'form-error-border' : null"
           [ngClass]="kegiatanForm.controls.title.disabled ? 'read-only' : null"
           placeholder="contoh: Sermon Gabungan Sektor">
+      </div>
+
+      <div class="form-group">
+        <div class="form-group">
+          <label for="inputType">
+            Jenis Kegiatan:*&nbsp;
+            <span *ngIf="formErrors['type']" class="form-error-message">{{ formErrors['type'] }}</span>
+          </label>
+          <!-- TODO: Fix issue where form cannot control selected value (on update & delete) -->
+          <select
+            formControlName="type"
+            id="inputType"
+            class="form-control"
+            (ngModelChange)="releaseFormError('type')"
+            [ngClass]="formErrors['type'] ? 'form-error-border' : null"
+            [ngClass]="kegiatanForm.controls.title.disabled ? 'read-only' : null">
+            <option
+              *ngFor="let t of jenisKegiatan"
+              value="{{ t.value }}"
+              id="{{ 'select' + t.value }}"
+              data-toggle="tooltip"
+              data-placement="right"
+              [title]="t.description">
+              {{ t.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputUrl">Tautan kegiatan daring:</label>
+        <input type="text"
+          formControlName="url"
+          id="inputUrl"
+          class="form-control"
+          [ngClass]="kegiatanForm.controls.url.disabled ? 'read-only' : null"
+          placeholder="contoh: https://www.somewebsite.com/watch?v=zW91Xf0Hm-M">
       </div>
 
       <small id="formDisclaimer" class="form-text text-muted">*Kolom bertanda "*" harus diisi.</small>
