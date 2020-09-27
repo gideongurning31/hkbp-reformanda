@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
 import { KegiatanService } from 'src/app/service/kegiatan.service';
 import { Kegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -10,10 +11,14 @@ import { AdminKegiatanFormComponent } from './admin-kegiatan-form/admin-kegiatan
 @Component({
   selector: 'app-admin-kegiatan',
   templateUrl: 'admin-kegiatan.component.html',
-  styleUrls: ['../admin-forms.component.scss'],
+  styleUrls: ['../admin-forms.component.scss']
 })
 export class AdminKegiatanComponent implements OnInit {
-  constructor(private kegiatanService: KegiatanService, private dialog: MatDialog, private snackBar: MatSnackBar) {}
+  constructor(
+    private kegiatanService: KegiatanService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private spinner: SpinnerCloakService) {}
 
   dataTable: Array<Kegiatan>;
 
@@ -23,13 +28,16 @@ export class AdminKegiatanComponent implements OnInit {
 
   getDataTable() {
     this.dataTable = [];
+    this.spinner.setSpinner(true);
     const subscription: Subscription = this.kegiatanService.getAll()
       .subscribe((response: Array<Kegiatan>) => {
         subscription.unsubscribe();
         this.dataTable = response;
+        this.spinner.setSpinner(false);
       }, error => {
         subscription.unsubscribe();
         console.error(error);
+        this.spinner.setSpinner(false);
       });
   }
 
