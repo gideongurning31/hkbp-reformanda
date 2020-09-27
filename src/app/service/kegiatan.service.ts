@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpUtilService } from '../utils/http-util.service';
 import { api } from './server.endpoints';
+import { Kegiatan } from '../pages/kegiatan/kegiatan.model';
+import { ActionType } from '../utils/common.enum';
 
 @Injectable()
 export class KegiatanService {
@@ -16,5 +18,12 @@ export class KegiatanService {
 
   getById(id: string) {
     return this.http.get(api + '/kegiatan/id/' + id);
+  }
+
+  submit(action: ActionType, payload: Kegiatan) {
+    let endpoint = api + '/kegiatan/';
+    if (action === ActionType.UPDATE) endpoint += payload.id;
+    else if (action === ActionType.DELETE) endpoint += `delete/${payload.id}`;
+    return this.http.post(endpoint, payload);
   }
 }

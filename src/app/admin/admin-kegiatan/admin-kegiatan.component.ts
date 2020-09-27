@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { KegiatanService } from 'src/app/service/kegiatan.service';
 import { Kegiatan } from 'src/app/pages/kegiatan/kegiatan.model';
+import { ActionType } from 'src/app/utils/common.enum';
+import { AdminKegiatanFormComponent } from './admin-kegiatan-form/admin-kegiatan-form.component';
 
 @Component({
   selector: 'app-admin-kegiatan',
@@ -31,7 +33,16 @@ export class AdminKegiatanComponent implements OnInit {
       });
   }
 
-  openForm(type: string, content?: Kegiatan) {}
+  openForm(type: string, content?: Kegiatan) {
+    const dialogRef = this.dialog.open(AdminKegiatanFormComponent, { data: { action: ActionType[type], content }});
+    dialogRef.componentInstance.successSubmit.subscribe((success?: boolean) => {
+      if (success) {
+        dialogRef.close();
+        this.getDataTable();
+        this.snackBar.open(SubmitMessage[ActionType[type]], 'x', { duration: 2500, horizontalPosition: 'end', verticalPosition: 'bottom' });
+      }
+    });
+  }
 
   displayUrl(url: string, maxlength: number = 20): string {
     return url.substring(0, maxlength) + '...';

@@ -1,0 +1,32 @@
+<div class="container popup-form">
+  <div class="row">
+    <h4 class="form-title">{{ formTitle }}</h4>
+  </div>
+  <hr>
+  <form [formGroup]="kegiatanForm">
+    <div class="container">
+
+      <div class="form-group">
+        <label for="inputTitle">
+          Nama Kegiatan:*&nbsp;
+          <span *ngIf="formErrors['title']" class="form-error-message">{{ formErrors['title'] }}</span>
+        </label>
+        <input type="text"
+          formControlName="title"
+          id="inputTitle"
+          (focus)="releaseFormError('title')"
+          class="form-control"
+          [ngClass]="formErrors['title'] ? 'form-error-border' : null"
+          [ngClass]="kegiatanForm.controls.title.disabled ? 'read-only' : null"
+          placeholder="contoh: Sermon Gabungan Sektor">
+      </div>
+
+      <small id="formDisclaimer" class="form-text text-muted">*Kolom bertanda "*" harus diisi.</small>
+    </div>
+  </form>
+  <hr>
+  <div class="form-footer">
+    <button type="button" class="btn btn-lg btn-success form-button" (click)="submit()">{{ data.action == 'DELETE' ? 'Hapus' : 'Simpan' }}</button>
+    <button type="button" class="btn btn-lg btn-danger form-button" (click)="cancel()">Batal</button>
+  </div>
+</div>
