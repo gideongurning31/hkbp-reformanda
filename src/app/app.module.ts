@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { UtilsModule } from './utils/utils-module';
@@ -41,6 +42,8 @@ import { AuthenticationService } from './service/authentication.service';
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatProgressSpinnerModule,
     AppRoutingModule,
     UtilsModule,

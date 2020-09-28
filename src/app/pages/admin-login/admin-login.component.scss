@@ -1,0 +1,30 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  padding: 30px;
+  margin-top: 10%;
+  background-color: var(--palette-L2);
+  border: 2px solid var(--palette-D1);
+  border-radius: 20px;
+}
+
+.login-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn-login,
+.btn-login:focus {
+  color: var(--palette-L2);
+  background-color: var(--palette-D1);
+  border-color: var(--palette-D1);
+}
+
+.btn-login:hover {
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+}
