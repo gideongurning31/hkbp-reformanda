@@ -11,6 +11,7 @@ import { RenunganModule } from './pages/renungan/renungan.module';
 import { KegiatanModule } from './pages/kegiatan/kegiatan.module';
 
 import { AppComponent } from './app.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BerandaComponent } from './pages/beranda/beranda.component';
 import { WartaComponent } from './pages/warta/warta.component';
@@ -20,10 +21,12 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './pages/not-found/not-found-component';
 import { SpinnerCloakComponent } from './utils/components/spinner-cloak/spinner-cloak.component';
 import { SpinnerCloakService } from './utils/components/spinner-cloak/spinner-cloak.service';
+import { AuthenticationService } from './service/authentication.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminLoginComponent,
     NavbarComponent,
     BerandaComponent,
     WartaComponent,
@@ -31,7 +34,7 @@ import { SpinnerCloakService } from './utils/components/spinner-cloak/spinner-cl
     InfoFormComponent,
     FooterComponent,
     NotFoundComponent,
-    SpinnerCloakComponent
+    SpinnerCloakComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +46,9 @@ import { SpinnerCloakService } from './utils/components/spinner-cloak/spinner-cl
     UtilsModule,
     AdminModule,
     RenunganModule,
-    KegiatanModule
+    KegiatanModule,
   ],
-  providers: [SpinnerCloakService],
-  bootstrap: [AppComponent]
+  providers: [SpinnerCloakService, AuthenticationService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.menu = menuConfig;
     this.mobileNav = false;
-    this.userIsAdmin = true; // TODO: Predefine user as admin or non-admin
+    this.userIsAdmin = false; // TODO: Predefine user as admin or non-admin
   }
 
   navigate(path: Array<string>) {
