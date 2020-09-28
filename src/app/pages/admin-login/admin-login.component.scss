@@ -17,6 +17,15 @@
   font-weight: bold;
 }
 
+.form-error-message {
+  font-weight: bold;
+  color: var(--palette-D2);
+}
+
+.field-error {
+  border: 2px solid var(--palette-D2);
+}
+
 .btn-login,
 .btn-login:focus {
   color: var(--palette-L2);
