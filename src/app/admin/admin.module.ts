@@ -6,6 +6,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UtilsModule } from '../utils/utils-module';
 import { AdminRoutingModule } from './admin-route.module';
+import { AdminGuard } from './service/admin-guard.service';
+import { AuthenticationService } from '../service/authentication.service';
 import { KategorialService } from '../service/kategorial-service';
 import { KegiatanService } from '../service/kegiatan.service';
 import { AdminComponent } from './admin.component';
@@ -37,6 +39,11 @@ import { AdminWartaComponent } from './admin-warta/admin-warta.component';
     UtilsModule,
     AdminRoutingModule,
   ],
-  providers: [KategorialService, KegiatanService],
+  providers: [
+    AdminGuard,
+    AuthenticationService,
+    KategorialService,
+    KegiatanService,
+  ],
 })
 export class AdminModule {}

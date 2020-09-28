@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BerandaComponent } from './pages/beranda/beranda.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
 import { NotFoundComponent } from './pages/not-found/not-found-component';
@@ -16,7 +17,11 @@ const routes: Routes = [
     component: BerandaComponent,
   },
   {
-    // TODO: Add route-guard for admin route
+    // TODO: Redirect to home-page/admin-page if logged-in.
+    path: 'login',
+    component: AdminLoginComponent,
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(load => load.AdminModule)
   },

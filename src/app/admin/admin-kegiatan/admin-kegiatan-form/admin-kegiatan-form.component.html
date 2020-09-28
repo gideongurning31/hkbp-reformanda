@@ -27,7 +27,6 @@
             Jenis Kegiatan:*&nbsp;
             <span *ngIf="formErrors['type']" class="form-error-message">{{ formErrors['type'] }}</span>
           </label>
-          <!-- TODO: Fix issue where form cannot control selected value (on update & delete) -->
           <select
             formControlName="type"
             id="inputType"

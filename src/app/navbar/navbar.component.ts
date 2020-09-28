@@ -8,7 +8,10 @@ import { menuConfig, Menu } from './navbar.menu';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+
+  // TODO: Admin navbar?
   constructor(private router: Router) {}
+
   menu: Array<Menu>;
   mobileNav: boolean;
   userIsAdmin: boolean;
@@ -16,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.menu = menuConfig;
     this.mobileNav = false;
-    this.userIsAdmin = false; // TODO: Predefine user as admin or non-admin
+    this.userIsAdmin = false;
   }
 
   navigate(path: Array<string>) {
@@ -26,4 +29,5 @@ export class NavbarComponent implements OnInit {
   toggleNav() {
     this.mobileNav = !this.mobileNav;
   }
+
 }
