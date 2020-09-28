@@ -5,6 +5,7 @@ import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { WartaComponent } from './pages/warta/warta.component';
 import { InfoComponent } from './pages/info/info.component';
 import { NotFoundComponent } from './pages/not-found/not-found-component';
+import { LoginGuard } from './service/login-guard.service';
 
 const routes: Routes = [
   {
@@ -17,9 +18,9 @@ const routes: Routes = [
     component: BerandaComponent,
   },
   {
-    // TODO: Redirect to home-page/admin-page if logged-in.
     path: 'login',
-    component: AdminLoginComponent,
+    canActivate: [LoginGuard],
+    component: AdminLoginComponent
   },
   {
     path: 'admin',

@@ -23,6 +23,7 @@ import { NotFoundComponent } from './pages/not-found/not-found-component';
 import { SpinnerCloakComponent } from './utils/components/spinner-cloak/spinner-cloak.component';
 import { SpinnerCloakService } from './utils/components/spinner-cloak/spinner-cloak.service';
 import { AuthenticationService } from './service/authentication.service';
+import { LoginGuard } from './service/login-guard.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { AuthenticationService } from './service/authentication.service';
     RenunganModule,
     KegiatanModule,
   ],
-  providers: [SpinnerCloakService, AuthenticationService],
+  providers: [SpinnerCloakService, AuthenticationService, LoginGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
