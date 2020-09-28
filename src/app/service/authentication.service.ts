@@ -11,6 +11,11 @@ export class AuthenticationService {
     return this.http.post(api + '/login', payload);
   }
 
+  setUserSession(token: string) {
+    localStorage.clear();
+    localStorage.setItem('token', token);
+  }
+
 }
 
 export interface LoginPayload {

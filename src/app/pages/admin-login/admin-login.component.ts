@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { animateFadeIn } from 'src/app/utils/common-animation';
@@ -16,7 +16,7 @@ import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spin
 })
 export class AdminLoginComponent extends BaseFormComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthenticationService, dialog: MatDialog, spinner: SpinnerCloakService) {
+  constructor(private authService: AuthenticationService, private snackBar: MatSnackBar, dialog: MatDialog, spinner: SpinnerCloakService) {
     super(dialog, spinner);
   }
 
@@ -52,7 +52,14 @@ export class AdminLoginComponent extends BaseFormComponent implements OnInit {
 
   private onLoginSuccess(subscription: Subscription, response: any) {
     subscription.unsubscribe();
-    console.info('Login response:', response.token);
+    if (!response.token) {
+      this.alertDialog('Terjadi kegagalan autentikasi dari server, harap hubungi Tim IT Reformanda.');
+      this.setSpinner(false);
+      return;
+    }
+
+    this.authService.setUserSession(response.token);
+    this.snackBar.open('Login berhasil.', 'x', { duration: 2500, horizontalPosition: 'end', verticalPosition: 'bottom' });
     this.setSpinner(false);
   }
 }
