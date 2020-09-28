@@ -9,17 +9,14 @@ import { menuConfig, Menu } from './navbar.menu';
 })
 export class NavbarComponent implements OnInit {
 
-  // TODO: Admin navbar?
   constructor(private router: Router) {}
 
   menu: Array<Menu>;
   mobileNav: boolean;
-  userIsAdmin: boolean;
 
   ngOnInit(): void {
     this.menu = menuConfig;
     this.mobileNav = false;
-    this.userIsAdmin = false;
   }
 
   navigate(path: Array<string>) {
