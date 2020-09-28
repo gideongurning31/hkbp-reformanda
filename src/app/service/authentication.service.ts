@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpUtilService } from '../utils/http-util.service';
 import { api } from './server.endpoints';
+import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthenticationService {
@@ -11,19 +12,38 @@ export class AuthenticationService {
     return this.http.post(api + '/login', payload);
   }
 
-  setUserSession(token: string) {
-    localStorage.clear();
-    localStorage.setItem('token', token);
+  setUserSession(token: string): void {
+    const decoded: TokenValue = jwt_decode(token);
+    if (decoded.payload.admin) {
+      localStorage.clear();
+      localStorage.setItem('token', token);
+      localStorage.setItem('sessionId', decoded.sub);
+      localStorage.setItem('user', decoded.payload.name);
+    }
   }
 
+  // TODO: Added method to verify and destroy invalid/expired token;
+  isAdmin(): boolean {
+    if (!localStorage.getItem('token')) return false;
+    const decoded: TokenValue = jwt_decode(localStorage.getItem('token'));
+    return decoded.payload && decoded.payload.admin ? decoded.payload.admin : false;
+  }
 }
 
-export interface LoginPayload {
+interface LoginPayload {
   user: string;
   pass: string;
 }
 
-export interface TokenPayload {
+interface TokenValue {
+  sub: string;
+  payload: TokenPayload;
+  iss: string;
+  iat: any;
+  exp: any;
+}
+
+interface TokenPayload {
   sessionId: string;
   sessionStart: any;
   username: string;
