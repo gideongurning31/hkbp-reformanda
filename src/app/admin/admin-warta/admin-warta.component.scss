@@ -1,0 +1,11 @@
+.submit-button {
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+  transition: 0.3s ease-out;
+}
+
+button.submit-button:hover {
+  font-weight: bold;
+  color: var(--palette-D1);
+  background-color: var(--palette-L2);
+}
