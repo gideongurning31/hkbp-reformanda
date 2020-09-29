@@ -8,7 +8,12 @@
       <div class="col">
         <div class="form-group">
           <label for="inputTanggal">Tanggal Warta:</label>
-          <input type="date" id="inputTanggal" class="form-control">
+          <input
+            type="date"
+            id="inputTanggal"
+            class="form-control"
+            [(ngModel)]="fileDate"
+            [ngModelOptions]="{standalone: true}">
         </div>
       </div>
       <div class="col">
@@ -16,13 +21,26 @@
           <label for="inputFileWarta">File Warta:</label>
           <div class="input-group">
             <div class="custom-file">
-              <input type="file" accept=".pdf" class="custom-file-input" id="inputFileWarta" lang="in">
-              <label class="custom-file-label" for="inputFileWarta">Pilih file (format: pdf)</label>
+              <label class="custom-file-label" for="inputFileWarta">
+                {{ pdfFile && pdfFile.name ? pdfFile.name : 'Pilih file (format: pdf)' }}
+              </label>
+              <input
+                type="file"
+                accept=".pdf"
+                id="inputFileWarta"
+                lang="in"
+                class="custom-file-input"
+                (change)="onFileInput($event.target.files)">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <button class="btn btn-block submit-button">Unggah Warta</button>
+    <button
+      (click)="submit()"
+      class="btn btn-block submit-button"
+      *ngIf="this.fileDate && this.pdfFile">
+      Unggah Warta
+    </button>
   </form>
 </div>

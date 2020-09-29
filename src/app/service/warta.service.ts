@@ -25,4 +25,8 @@ export class WartaService {
     return this.http.download(endpoint);
   }
 
+  upload(fileDate: any, file: File) {
+    return this.http.post(api + '/warta', { file, fileDate });
+  }
+
 }
