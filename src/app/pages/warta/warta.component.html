@@ -4,7 +4,7 @@
     <h4>Ressort Bandung Tengah</h4>
   </div>
   <div class="warta">
-    <button type="button" class="btn btn-lg" (click)="downloadLatest()">
+    <button type="button" class="btn btn-lg" (click)="download()">
       Unduh warta terbaru
     </button>
     <h5>atau cari dari arsip:</h5>
@@ -40,6 +40,22 @@
     </p>
   </div>
 </div>
-<div class="container" @fading>
-  <!-- TODO: warta archive -->
+<div class="container" *ngIf="archive" @fading>
+  <div *ngIf="archive.length === 0; else showArchive">Arsip tidak ditemukan.</div>
+  <ng-template #showArchive>
+    <ul class="warta-archive">
+      <li *ngFor="let warta of archive" class="warta-archive">
+        <strong>Warta Jemaat&nbsp;{{ warta.fileDate | date: 'dd MMMM yyyy' }}&emsp;</strong>
+        <button
+          type="button"
+          class="btn"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Klik untuk mengunduh warta"
+          (click)="download(warta.id)">
+          <i class="fa fa-download"></i>
+        </button>
+      </li>
+    </ul>
+  </ng-template>
 </div>

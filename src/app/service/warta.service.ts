@@ -12,12 +12,17 @@ export class WartaService {
     return this.http.get(api + '/warta');
   }
 
-  latestWarta(): Observable<Blob> {
-    return this.http.download(api + '/warta/latest');
+  // TODO: Endpoint to query monthly archive
+  wartaArchive(month: string, year: string) {
+    const period = `${month}/${year}`;
+    return this.http.get(api + '/warta');
   }
 
-  wartaById(id: string): Observable<Blob> {
-    return this.http.download(api + '/warta/id/' + id);
+  download(id: string = null): Observable<Blob> {
+    let endpoint = api + '/warta/';
+    if (!id) endpoint += 'latest';
+    else endpoint += `id/${id}`;
+    return this.http.download(endpoint);
   }
 
 }
