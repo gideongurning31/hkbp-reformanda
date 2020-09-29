@@ -12,10 +12,8 @@ export class WartaService {
     return this.http.get(api + '/warta');
   }
 
-  // TODO: Endpoint to query monthly archive
   wartaArchive(month: string, year: string) {
-    const period = `${month}/${year}`;
-    return this.http.get(api + '/warta');
+    return this.http.get(`${api}/warta/archive/${month}/${year}`);
   }
 
   download(id: string = null): Observable<Blob> {
