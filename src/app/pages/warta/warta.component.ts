@@ -19,16 +19,14 @@ export class WartaComponent implements OnInit {
   constructor(private wartaService: WartaService, private fileHelper: FileHelperService, private spinner: SpinnerCloakService) {}
 
   searchForm: FormGroup;
-  showArchive: boolean;
   monthSelect: Array<LabelValue> = months;
   yearSelect: Array<LabelValue> = years;
 
   ngOnInit(): void {
-    this.showArchive = false;
+    this.initSearchForm();
   }
 
   initSearchForm() {
-    this.showArchive = true;
     this.searchForm = new FormGroup({
       month: new FormControl(null, Validators.required),
       year: new FormControl(null, Validators.required),
@@ -49,6 +47,8 @@ export class WartaComponent implements OnInit {
       });
   }
 
-  searchArchive() {}
+  searchArchive() {
+    console.log(this.searchForm.value);
+  }
 
 }
