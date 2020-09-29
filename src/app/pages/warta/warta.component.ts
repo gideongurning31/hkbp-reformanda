@@ -48,7 +48,7 @@ export class WartaComponent implements OnInit {
     const subscription = this.wartaService.download(id)
       .subscribe(response => {
         subscription.unsubscribe();
-        this.fileHelper.downloadFile(response);
+        this.fileHelper.downloadFile(response, id);
         this.spinner.setSpinner(false);
       }, error => {
         subscription.unsubscribe();

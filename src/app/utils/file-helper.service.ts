@@ -5,21 +5,22 @@ export class FileHelperService {
 
   constructor() {}
 
-  downloadFile(response: Blob) {
-    const newBlob = new Blob([response], { type: 'application/pdf' });
+  downloadFile(file: Blob, fileId?: string) {
+    const blob = new Blob([file], { type: 'application/pdf' });
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveOrOpenBlob(newBlob);
+      window.navigator.msSaveOrOpenBlob(blob);
       return;
     }
 
-    const data = window.URL.createObjectURL(newBlob);
-    const link = document.createElement('a');
-    link.href = data;
-    link.download = 'WJ-Reformanda.pdf';
-    link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = fileId ? fileId : 'WJ_Reformanda' + '.pdf';
+    anchor.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
     setTimeout(() => {
-      window.URL.revokeObjectURL(data);
-      link.remove();
+      window.URL.revokeObjectURL(url);
+      anchor.remove();
     }, 100);
   }
+
 }
