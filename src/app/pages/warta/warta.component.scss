@@ -35,6 +35,17 @@ button:hover {
   margin: 0 25px;
 }
 
+.form-error-border {
+  border: 2px solid var(--palette-D2);
+}
+
+.invalidFormText {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  color: var(--palette-D2);
+}
+
 select, button#search {
   margin: 10px auto;
 }

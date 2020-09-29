@@ -21,12 +21,14 @@ export class WartaComponent implements OnInit {
   searchForm: FormGroup;
   monthSelect: Array<LabelValue> = months;
   yearSelect: Array<LabelValue> = years;
+  formError: boolean;
 
   ngOnInit(): void {
     this.initSearchForm();
   }
 
   initSearchForm() {
+    this.formError = false;
     this.searchForm = new FormGroup({
       month: new FormControl(null, Validators.required),
       year: new FormControl(null, Validators.required),
@@ -48,7 +50,9 @@ export class WartaComponent implements OnInit {
   }
 
   searchArchive() {
-    console.log(this.searchForm.value);
+    const value = this.searchForm.value;
+    this.formError = !value.month || !value.year;
+    if (!this.formError) console.log(`${value.month}/${value.year}`);
   }
 
 }

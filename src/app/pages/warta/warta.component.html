@@ -10,12 +10,22 @@
     <h5>atau cari dari arsip:</h5>
     <form class="form-inline searchWartaForm" [formGroup]="searchForm" (ngSubmit)="searchArchive()">
       <div class="form-group mx-sm-3 mb-2">
-        <select formControlName="year" class="form-control" id="selectYear">
+        <select
+          formControlName="year"
+          id="selectYear"
+          class="form-control"
+          [ngClass]="formError ? 'form-error-border' : null"
+          (ngModelChange)="formError = false">
           <option *ngFor="let y of yearSelect" [value]="y.value" [hidden]="!y.value">{{ y.label }}</option>
         </select>
       </div>
       <div class="form-group mx-sm-3 mb-2">
-        <select formControlName="month" class="form-control" id="selectMonth">
+        <select
+          formControlName="month"
+          id="selectMonth"
+          class="form-control"
+          [ngClass]="formError ? 'form-error-border' : null"
+          (ngModelChange)="formError = false">
           <option *ngFor="let m of monthSelect" [value]="m.value" [hidden]="!m.value">{{ m.label }}</option>
         </select>
       </div>
@@ -24,7 +34,12 @@
       </button>
     </form>
   </div>
+  <div class="row">
+    <p class="invalidFormText" *ngIf="formError">
+      Bulan dan tahun harus dipilih untuk melihat arsip Warta.
+    </p>
+  </div>
 </div>
-<div class="container">
+<div class="container" @fading>
   <!-- TODO: warta archive -->
 </div>
