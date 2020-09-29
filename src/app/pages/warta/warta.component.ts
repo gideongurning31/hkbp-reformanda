@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { LabelValue } from 'src/app/utils/label-value.model';
 import { animateFadeIn } from 'src/app/utils/common-animation';
@@ -7,6 +8,7 @@ import { months, years } from './warta.datepicker';
 import { WartaService } from 'src/app/service/warta.service';
 import { FileHelperService } from 'src/app/utils/file-helper.service';
 import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
+import { AlertDialogComponent } from 'src/app/utils/components/alert-dialog.component';
 
 @Component({
   selector: 'app-warta',
@@ -17,7 +19,11 @@ import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spin
 })
 export class WartaComponent implements OnInit {
 
-  constructor(private wartaService: WartaService, private fileHelper: FileHelperService, private spinner: SpinnerCloakService) {}
+  constructor(
+    private wartaService: WartaService,
+    private fileHelper: FileHelperService,
+    private spinner: SpinnerCloakService,
+    private dialog: MatDialog) {}
 
   searchForm: FormGroup;
   archive: Array<WartaArchive>;
@@ -46,7 +52,7 @@ export class WartaComponent implements OnInit {
         this.spinner.setSpinner(false);
       }, error => {
         subscription.unsubscribe();
-        console.error(error);
+        this.dialog.open(AlertDialogComponent, { data: 'Terjadi kesalahan teknis saat mengunduh warta, mohon coba lagi.' });
         this.spinner.setSpinner(false);
       });
   }

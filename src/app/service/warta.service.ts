@@ -19,9 +19,8 @@ export class WartaService {
   }
 
   download(id: string = null): Observable<Blob> {
-    let endpoint = api + '/warta/';
-    if (!id) endpoint += 'latest';
-    else endpoint += `id/${id}`;
+    let endpoint = api + '/warta/download';
+    if (id) endpoint += `/${id}`;
     return this.http.download(endpoint);
   }
 
