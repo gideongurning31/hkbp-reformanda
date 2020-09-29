@@ -19,4 +19,8 @@ export class HttpUtilService {
     return this.http.get(endpoint, { responseType: 'blob' });
   }
 
+  upload(endpoint: string, params?: FormData) {
+    return this.http.post(endpoint, params);
+  }
+
 }

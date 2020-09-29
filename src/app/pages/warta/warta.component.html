@@ -41,7 +41,9 @@
   </div>
 </div>
 <div class="container" *ngIf="archive" @fading>
-  <div *ngIf="archive.length === 0; else showArchive">Arsip tidak ditemukan.</div>
+  <div *ngIf="archive.length === 0; else showArchive">
+    <p style="text-align: center; font-weight: bold;">Arsip tidak ditemukan.</p>
+  </div>
   <ng-template #showArchive>
     <ul class="warta-archive">
       <li *ngFor="let warta of archive" class="warta-archive">

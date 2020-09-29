@@ -26,7 +26,10 @@ export class WartaService {
   }
 
   upload(fileDate: any, file: File) {
-    return this.http.post(api + '/warta', { file, fileDate });
+    const params = new FormData();
+    params.append('fileDate', fileDate);
+    params.append('file', file);
+    return this.http.upload(api + '/warta', params);
   }
 
 }
