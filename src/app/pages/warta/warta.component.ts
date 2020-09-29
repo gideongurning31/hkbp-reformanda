@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LabelValue } from 'src/app/utils/label-value.model';
 import { animateFadeIn } from 'src/app/utils/common-animation';
 import { months, years } from './warta.datepicker';
@@ -17,12 +18,21 @@ export class WartaComponent implements OnInit {
 
   constructor(private wartaService: WartaService, private fileHelper: FileHelperService, private spinner: SpinnerCloakService) {}
 
+  searchForm: FormGroup;
   showArchive: boolean;
   monthSelect: Array<LabelValue> = months;
-  yearSelect: Array<number> = years;
+  yearSelect: Array<LabelValue> = years;
 
   ngOnInit(): void {
     this.showArchive = false;
+  }
+
+  initSearchForm() {
+    this.showArchive = true;
+    this.searchForm = new FormGroup({
+      month: new FormControl(null, Validators.required),
+      year: new FormControl(null, Validators.required),
+    });
   }
 
   downloadLatest() {
@@ -38,5 +48,7 @@ export class WartaComponent implements OnInit {
         this.spinner.setSpinner(false);
       });
   }
+
+  searchArchive() {}
 
 }

@@ -8,7 +8,7 @@
       Unduh warta terbaru
     </button>
     <h5>atau</h5>
-    <button type="button" class="btn btn-lg" (click)="showArchive = true">
+    <button type="button" class="btn btn-lg" (click)="initSearchForm()">
       Cari dari arsip
     </button>
   </div>
@@ -17,27 +17,30 @@
   <form>
     <div class="form-group">
       <div class="row">
-        <div class="col-lg-2 col-md-1"></div>
-        <div class="col-lg-3 col-md-4 col-sm-5">
-          <select class="form-control" id="selectYear">
-            <option hidden>Pilih Tahun</option>
-            <ng-container *ngFor="let y of yearSelect">
-              <option>{{ y }}</option>
-            </ng-container>
-          </select>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-5">
-          <select class="form-control" id="selectMonth">
-            <option hidden>Pilih Bulan</option>
-            <ng-container *ngFor="let m of monthSelect">
-              <option value="{{ m.value }}">{{ m.label }}</option>
-            </ng-container>
-          </select>
-        </div>
-        <div class="col-lg-1 col-md-2 col-sm-2">
-          <button type="button" class="btn btn-block" id="search"><i class="fa fa-search"></i></button>
-        </div>
-        <div class="col-lg-2 col-md-1"></div>
+
+        <!-- TODO: Fix layout -->
+        <form class="form-inline searchWartaForm" [formGroup]="searchForm" (ngSubmit)="searchArchive()">
+          <div class="form-group mx-sm-3 mb-2">
+            <select
+              formControlName="year"
+              class="form-control"
+              id="selectYear">
+              <option *ngFor="let y of yearSelect" [value]="y.value" [hidden]="!y.value">{{ y.label }}</option>
+            </select>
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <select
+              formControlName="year"
+              class="form-control"
+              id="selectMonth">
+              <option *ngFor="let m of monthSelect" [value]="m.value" [hidden]="!m.value">{{ m.label }}</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary mb-2" id="searchWarta">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+
       </div>
     </div>
   </form>
