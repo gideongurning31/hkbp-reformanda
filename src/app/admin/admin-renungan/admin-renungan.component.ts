@@ -44,6 +44,7 @@ export class AdminRenunganComponent implements OnInit {
 
   openForm(type: string, content?: Renungan) {
     const dialogRef = this.dialog.open(AdminRenunganFormComponent, { data: { action: ActionType[type], content }});
+    dialogRef.componentInstance.unauthorized.subscribe(() => dialogRef.close());
     dialogRef.componentInstance.successSubmit.subscribe((success?: boolean) => {
       if (success) {
         dialogRef.close();

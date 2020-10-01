@@ -23,7 +23,6 @@ export class AuthenticationService {
     }
   }
 
-  // TODO: Added method to verify and destroy invalid/expired token;
   isAdmin(): boolean {
     if (!localStorage.getItem('token')) return false;
     const decoded: TokenValue = jwt_decode(localStorage.getItem('token'));

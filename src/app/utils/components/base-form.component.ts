@@ -14,6 +14,7 @@ export class BaseFormComponent {
 
   successSubmit: EventEmitter<boolean> = new EventEmitter();
   failedSubmit: EventEmitter<string> = new EventEmitter();
+  unauthorized: EventEmitter<void> = new EventEmitter();
   formErrors: {};
 
   releaseFormErrors(keys: Array<string>): void {
@@ -30,11 +31,9 @@ export class BaseFormComponent {
 
   onErrorResponse(subscription: Subscription, e: any) {
     subscription.unsubscribe();
-    let message = 'Something went wrong.';
-    if (e.error && e.error.message) message = e.error.message;
-    else if (!e.status || e.status === 0) message = 'Terjadi kesalahan internal pada server.';
     this.spinner.setSpinner(false);
-    this.alertDialog(message);
+    if ([401, 403].indexOf(e.status) > -1) this.unauthorized.emit();
+    else this.handleCommonError(e);
   }
 
   alertDialog(message: string) {
@@ -51,5 +50,12 @@ export class BaseFormComponent {
 
   setSpinner(display: boolean) {
     this.spinner.setSpinner(display);
+  }
+
+  private handleCommonError(e: any) {
+    let message = 'Something went wrong.';
+    if (e.error && typeof e.error === typeof 'string') message = e.error;
+    else if (!e.status || e.status === 0) message = 'Terjadi kesalahan internal pada server.';
+    this.alertDialog(message);
   }
 }
