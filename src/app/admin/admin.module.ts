@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -10,6 +11,7 @@ import { AdminGuard } from './service/admin-guard.service';
 import { AuthenticationService } from '../service/authentication.service';
 import { KategorialService } from '../service/kategorial-service';
 import { KegiatanService } from '../service/kegiatan.service';
+import { TokenInterceptor } from './service/token-interceptor';
 import { AdminComponent } from './admin.component';
 import { AdminKategorialComponent } from './admin-kategorial/admin-kategorial.component';
 import { AdminKegiatanComponent } from './admin-kegiatan/admin-kegiatan.component';
@@ -40,6 +42,7 @@ import { AdminWartaComponent } from './admin-warta/admin-warta.component';
     AdminRoutingModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     AdminGuard,
     AuthenticationService,
     KategorialService,
