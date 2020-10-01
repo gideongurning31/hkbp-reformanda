@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpUtilService } from '../utils/http-util.service';
-import { api } from './server.endpoints';
 import jwt_decode from 'jwt-decode';
 
 @Injectable()
@@ -10,7 +9,7 @@ export class AuthenticationService {
   constructor(private route: Router, private http: HttpUtilService) {}
 
   login(payload: LoginPayload) {
-    return this.http.post(api + '/login', payload);
+    return this.http.post('/api/login', payload);
   }
 
   setUserSession(token: string): void {
