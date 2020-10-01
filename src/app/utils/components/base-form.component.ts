@@ -30,8 +30,8 @@ export class BaseFormComponent {
 
   onErrorResponse(subscription: Subscription, e: any) {
     subscription.unsubscribe();
-    let message = 'An unexpected error occurred.';
-    if (e.error && typeof e.error === typeof 'string') message = e.error;
+    let message = 'Something went wrong.';
+    if (e.error && e.error.message) message = e.error.message;
     else if (!e.status || e.status === 0) message = 'Terjadi kesalahan internal pada server.';
     this.spinner.setSpinner(false);
     this.alertDialog(message);
