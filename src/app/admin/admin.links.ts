@@ -1,4 +1,9 @@
-import { Links } from '../pages/beranda/beranda.links';
+export interface Links {
+  icon: string;
+  text: string;
+  path: Array<string>;
+  description?: string;
+}
 
 export const adminlinks: Array<Links> = [
   {
@@ -17,7 +22,7 @@ export const adminlinks: Array<Links> = [
     path: ['admin', 'kegiatan'],
   },
   {
-    icon: 'fa fa-object-group',
+    icon: 'gg gg-gallery',
     text: 'Profil Kategorial',
     path: ['admin', 'kategorial'],
   },

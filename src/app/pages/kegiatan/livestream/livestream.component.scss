@@ -7,3 +7,40 @@ h3, h5 {
   align-items: center;
   justify-content: center;
 }
+
+div.jadwal, .jadwal>div {
+  margin-top: 25px;
+}
+
+.jadwal>h5, h6 {
+  margin: 0;
+  text-align: center;
+}
+
+p.jadwal, p.waktu {
+  text-align: center;
+  font-weight: bold;
+}
+
+p.waktu {
+  font-family: "Montserrat", "Nunito", sans-serif;
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link-warta {
+  font-weight: bold;
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+  border-radius: 10px;
+  padding: 5px 10px;
+  transition: .3s ease-in;
+}
+
+.link-warta:hover {
+  color: var(--palette-D1);
+  background-color: var(--palette-L2);
+}

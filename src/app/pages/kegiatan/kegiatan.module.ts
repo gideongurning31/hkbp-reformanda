@@ -7,7 +7,6 @@ import { KategorialComponent } from './kategorial/kategorial.component';
 import { KategorialDetailsComponent } from './kategorial-details/kategorial-details.component';
 import { LiveStreamComponent } from './livestream/livestream.component';
 import { KategorialService } from 'src/app/service/kategorial-service';
-import { KegiatanService } from 'src/app/service/kegiatan.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +16,6 @@ import { KegiatanService } from 'src/app/service/kegiatan.service';
     LiveStreamComponent,
   ],
   imports: [CommonModule, KegiatanRoutingModule, UtilsModule],
-  providers: [KategorialService, KegiatanService],
+  providers: [KategorialService],
 })
 export class KegiatanModule {}

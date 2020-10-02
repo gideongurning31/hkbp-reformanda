@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Links } from '../pages/beranda/beranda.links';
-import { adminlinks } from './admin.links';
+import { adminlinks, Links } from './admin.links';
 
 @Component({
   selector: 'app-admin',
@@ -9,6 +8,7 @@ import { adminlinks } from './admin.links';
   styleUrls: ['admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
+
   constructor(private router: Router) {}
 
   links: Array<Links>;

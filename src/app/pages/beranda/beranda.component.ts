@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Links, links } from './beranda.links';
+import { Links } from 'src/app/admin/admin.links';
+import { links } from './beranda.links';
 import { animateFadeIn } from 'src/app/utils/common-animation';
 
 @Component({
@@ -10,9 +11,11 @@ import { animateFadeIn } from 'src/app/utils/common-animation';
   animations: [animateFadeIn],
 })
 export class BerandaComponent implements OnInit {
+
+  constructor(private router: Router) {}
+
   count = 0;
   links: Array<Links>;
-  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.links = links;

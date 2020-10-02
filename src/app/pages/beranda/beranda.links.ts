@@ -1,9 +1,4 @@
-export interface Links {
-  icon: string;
-  text: string;
-  path: Array<string>;
-  description?: string;
-}
+import { Links } from 'src/app/admin/admin.links';
 
 export const links: Array<Links> = [
   {
