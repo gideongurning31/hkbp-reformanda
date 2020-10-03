@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Paging } from '../../paging-helper.service';
 
 @Component({
@@ -7,11 +7,21 @@ import { Paging } from '../../paging-helper.service';
   styleUrls: ['pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit {
-
   constructor() {}
 
+  @Output() setPage: EventEmitter<number> = new EventEmitter();
   @Input() paging: Paging;
+  pages: Array<number> = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pages = [];
+    for (let i = 0; i <= this.paging.totalPage; i++) this.pages.push(i + 1);
+  }
+
+  onPageClick(page: number) {
+    if (page > 0 && page !== this.paging.page) {
+      this.setPage.emit(page);
+    }
+  }
 
 }

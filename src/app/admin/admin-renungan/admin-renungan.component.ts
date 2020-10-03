@@ -33,7 +33,10 @@ export class AdminRenunganComponent implements OnInit {
   getDataTable() {
     this.spinner.setSpinner(true);
     this.dataTable = [];
-    const subscription: Subscription = this.renunganService.getAllRenungan()
+    const page = this.paging ? this.paging.page : 0;
+    const subscription: Subscription = this.renunganService
+      // .getAllRenungan(page, 2)
+      .getAllRenungan()
       .subscribe((response: ApiPagingResponse) => {
         subscription.unsubscribe();
         this.paging = this.pagingHelper.getPaging(response.paging);
@@ -44,6 +47,11 @@ export class AdminRenunganComponent implements OnInit {
         this.snackAlert('Gagal mendapatkan data dari server.');
         this.spinner.setSpinner(false);
       });
+  }
+
+  setPage(page: number) {
+    this.paging.page = page;
+    this.getDataTable();
   }
 
   openForm(type: string, content?: Renungan) {

@@ -2,7 +2,7 @@
   <div class="row">
     <h3 class="admin-header">Update Menu Renungan Harian</h3>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="this.dataTable && this.dataTable.length > 0; else noData">
     <table class="table table-bordered table-hover">
       <thead class="thead-dark">
         <tr>
@@ -61,5 +61,9 @@
         </tr>
       </tbody>
     </table>
+    <app-pagination *ngIf="paging.totalRow > paging.rowPerPage" [paging]="paging" (setPage)="setPage($event)"></app-pagination>
   </div>
+  <ng-template #noData>
+    <p class="no-data">No data to display.</p>
+  </ng-template>
 </div>

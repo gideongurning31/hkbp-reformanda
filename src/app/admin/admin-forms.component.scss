@@ -58,3 +58,11 @@ th, td {
   cursor: no-drop;
   color: var(--palette-D2);
 }
+
+.no-data {
+  width: 80%;
+  margin: 50px 10% 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+}

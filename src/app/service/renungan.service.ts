@@ -5,10 +5,11 @@ import { ActionType } from '../utils/common.enum';
 
 @Injectable()
 export class RenunganService {
+
   constructor(private http: HttpUtilService) {}
 
-  getAllRenungan() {
-    return this.http.get('/api/renungan');
+  getAllRenungan(page: number = 0, size: number = 10) {
+    return this.http.get(`/api/renungan?page=${page}&size=${size}`);
   }
 
   getRenunganById(id: string) {
@@ -25,4 +26,5 @@ export class RenunganService {
     else if (action === ActionType.DELETE) endpoint += `delete/${payload.id}`;
     return this.http.post(endpoint, payload);
   }
+
 }
