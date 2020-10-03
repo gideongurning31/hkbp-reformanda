@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
-import { PagingHelperService, ApiPaging, Paging } from 'src/app/utils/paging-helper.service';
+import { PagingHelper, ApiPaging, Paging } from 'src/app/utils/paging-helper.service';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -18,7 +18,7 @@ export class AdminRenunganComponent implements OnInit {
 
   constructor(
     private spinner: SpinnerCloakService,
-    private pagingHelper: PagingHelperService,
+    private pagingHelper: PagingHelper,
     private renunganService: RenunganService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar) {}

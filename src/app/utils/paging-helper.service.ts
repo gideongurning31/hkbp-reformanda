@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class PagingHelperService {
+export class PagingHelper {
   constructor() {}
 
   getPaging(paging: ApiPaging): Paging {
