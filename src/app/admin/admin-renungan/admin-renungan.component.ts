@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
+import { PagingHelperService, ApiPaging, Paging } from 'src/app/utils/paging-helper.service';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -17,11 +18,13 @@ export class AdminRenunganComponent implements OnInit {
 
   constructor(
     private spinner: SpinnerCloakService,
+    private pagingHelper: PagingHelperService,
     private renunganService: RenunganService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar) {}
 
   dataTable: Array<Renungan>;
+  paging: Paging;
 
   ngOnInit(): void {
     this.getDataTable();
@@ -31,13 +34,14 @@ export class AdminRenunganComponent implements OnInit {
     this.spinner.setSpinner(true);
     this.dataTable = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
-      .subscribe((response: Array<Renungan>) => {
+      .subscribe((response: ApiPaging) => {
         subscription.unsubscribe();
-        this.dataTable = response;
+        this.paging = this.pagingHelper.getPaging(response);
+        this.dataTable = this.paging.data;
         this.spinner.setSpinner(false);
       }, (error) => {
         subscription.unsubscribe();
-        console.error(error);
+        this.snackAlert('Gagal mendapatkan data dari server.');
         this.spinner.setSpinner(false);
       });
   }
@@ -49,8 +53,16 @@ export class AdminRenunganComponent implements OnInit {
       if (success) {
         dialogRef.close();
         this.getDataTable();
-        this.snackBar.open(SubmitMessage[ActionType[type]], 'x', { duration: 2500, horizontalPosition: 'end', verticalPosition: 'bottom' });
+        this.snackAlert(SubmitMessage[ActionType[type]]);
       }
+    });
+  }
+
+  private snackAlert(message: string): void {
+    this.snackBar.open(message, 'x', {
+      duration: 2500,
+      horizontalPosition: 'end',
+      verticalPosition: 'bottom',
     });
   }
 }
