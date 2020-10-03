@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
-import { PagingHelper, ApiPaging, Paging } from 'src/app/utils/paging-helper.service';
+import { PagingHelper, ApiPagingResponse, Paging } from 'src/app/utils/paging-helper.service';
 import { RenunganService } from 'src/app/service/renungan.service';
 import { Renungan } from 'src/app/pages/renungan/renungan.model';
 import { ActionType } from 'src/app/utils/common.enum';
@@ -34,12 +34,12 @@ export class AdminRenunganComponent implements OnInit {
     this.spinner.setSpinner(true);
     this.dataTable = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
-      .subscribe((response: ApiPaging) => {
+      .subscribe((response: ApiPagingResponse) => {
         subscription.unsubscribe();
-        this.paging = this.pagingHelper.getPaging(response);
-        this.dataTable = this.paging.data;
+        this.paging = this.pagingHelper.getPaging(response.paging);
+        this.dataTable = response.data;
         this.spinner.setSpinner(false);
-      }, (error) => {
+      }, error => {
         subscription.unsubscribe();
         this.snackAlert('Gagal mendapatkan data dari server.');
         this.spinner.setSpinner(false);

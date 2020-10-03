@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SpinnerCloakService } from 'src/app/utils/components/spinner-cloak/spinner-cloak.service';
-import { PagingHelper, ApiPaging, Paging } from 'src/app/utils/paging-helper.service';
+import { PagingHelper, ApiPagingResponse, Paging } from 'src/app/utils/paging-helper.service';
 import { RenunganService } from '../../service/renungan.service';
 import { Renungan } from './renungan.model';
 
@@ -26,13 +26,13 @@ export class RenunganComponent implements OnInit {
     this.spinner.setSpinner(true);
     this.listRenungan = [];
     const subscription: Subscription = this.renunganService.getAllRenungan()
-      .subscribe((response: ApiPaging) => {
+      .subscribe((response: ApiPagingResponse) => {
         subscription.unsubscribe();
-        this.paging = this.pagingHelper.getPaging(response);
-        this.listRenungan = this.paging.data;
+        this.paging = this.pagingHelper.getPaging(response.paging);
+        this.listRenungan = response.data;
         this.viewDetail(this.listRenungan[0]);
         this.spinner.setSpinner(false);
-      }, (error) => {
+      }, error => {
         subscription.unsubscribe();
         console.error(error);
         this.spinner.setSpinner(false);

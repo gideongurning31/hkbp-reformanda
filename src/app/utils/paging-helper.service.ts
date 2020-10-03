@@ -11,16 +11,19 @@ export class PagingHelper {
       rowPerPage: paging.rowPerPage,
       totalRow: paging.totalRow,
       totalPage: Math.floor(totalPage),
-      data: paging.data,
     };
   }
+}
+
+export interface ApiPagingResponse {
+  paging: ApiPaging;
+  data: Array<any>;
 }
 
 export interface ApiPaging {
   page: number;
   rowPerPage: number;
   totalRow: number;
-  data: Array<any>;
 }
 
 export interface Paging extends ApiPaging {
