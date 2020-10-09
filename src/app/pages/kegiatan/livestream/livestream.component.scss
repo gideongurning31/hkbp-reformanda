@@ -2,10 +2,29 @@ h3, h5 {
   text-align: center;
 }
 
+.carousel-caption {
+  width: 640px;
+  margin: 0 auto;
+  color: var(--palette-L1);
+  background-color: rgba($color: black, $alpha: .75);
+}
+
+.btn-carousel {
+  color: var(--palette-L1);
+  background-color: var(--palette-D2);
+}
+
 .livestream-content {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.livestream-border {
+  border-radius: 15px;
+  overflow: hidden;
+  height: 480px;
+  width: 640px;
 }
 
 div.jadwal, .jadwal>div {

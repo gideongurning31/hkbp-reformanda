@@ -1,13 +1,32 @@
 <div class="container jadwal" @fadeDown>
-  <ng-container *ngIf="events; else noEvents">
-    <div class="container">
-      <h3>{{ events.title }}</h3>
-      <h5 *ngIf="events.startDate">
-        {{ events.startDate | date: 'd MMMM yyyy' }}
-      </h5>
-      <div class="livestream-content">
-        <iframe width="640" height="480" frameborder="0" [src]="events.url | safeUrl" allowfullscreen></iframe>
+  <ng-container *ngIf="events && events.length > 0; else noEvents">
+    <div id="livestreamCarousel" class="carousel carousel-fade">
+      <div class="carousel-inner">
+        <ng-container *ngFor="let event of events; let i = index;">
+          <div class="carousel-item" [ngClass]="{ 'active': i === currentCarousel }">
+            <div class="livestream-content">
+              <div class="livestream-border">
+                <iframe width="640" height="480" frameborder="0" [src]=" event.url | safeUrl" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ event.title }}&emsp;({{ event.startDate | date: 'HH:mm' }} - {{ event.endDate | date: 'HH:mm' }})</h5>
+            </div>
+          </div>
+        </ng-container>
       </div>
+      <ng-container *ngIf="events.length > 1">
+        <div class="carousel-control-prev">
+          <button type="button" class="btn btn-fw btn-carousel" (click)="prevCarousel()">
+            <i class="fa fa-arrow-left"></i>
+          </button>
+        </div>
+        <div class="carousel-control-next">
+          <button type="button" class="btn btn-fw btn-carousel" (click)="nextCarousel()">
+            <i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+      </ng-container>
     </div>
   </ng-container>
   <ng-template #noEvents>

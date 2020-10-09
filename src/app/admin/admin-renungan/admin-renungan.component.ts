@@ -35,7 +35,6 @@ export class AdminRenunganComponent implements OnInit {
     this.dataTable = [];
     const page = this.paging ? this.paging.page : 0;
     const subscription: Subscription = this.renunganService
-      // .getAllRenungan(page, 2)
       .getAllRenungan()
       .subscribe((response: ApiPagingResponse) => {
         subscription.unsubscribe();
